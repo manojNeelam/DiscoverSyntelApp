@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContentViewController"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewControllerCell" id="2" customClass="CollectionViewControllerCell">
+            <rect key="frame" x="0.0" y="0.0" width="159" height="180"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="159" height="180"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tiltle" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="144" translatesAutoresizingMaskIntoConstraints="NO" id="qeD-ps-OyW">
+                        <rect key="frame" x="7" y="3" width="144" height="27"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="Pub date" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="144" translatesAutoresizingMaskIntoConstraints="NO" id="e45-Uk-lMG">
+                        <rect key="frame" x="7" y="131" width="144" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IDD-Uu-Vef">
+                        <rect key="frame" x="7" y="40" width="144" height="89"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" red="0.18039215689999999" green="0.4941176471" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+            <size key="customSize" width="159" height="220"/>
+            <connections>
+                <outlet property="imageView" destination="IDD-Uu-Vef" id="2qV-Xb-m2E"/>
+                <outlet property="pubDateLabel" destination="e45-Uk-lMG" id="N3f-V9-tvI"/>
+                <outlet property="titleLabel" destination="qeD-ps-OyW" id="NCg-nc-7Cl"/>
+            </connections>
+        </collectionViewCell>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewControllerCellWithoutImgView" id="Qu8-8g-pcj" customClass="CollectionViewControllerCell">
+            <rect key="frame" x="0.0" y="0.0" width="159" height="220"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="159" height="220"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tiltle" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="144" translatesAutoresizingMaskIntoConstraints="NO" id="KhL-CF-Vyo">
+                        <rect key="frame" x="7" y="3" width="144" height="169"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Pub date" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="144" translatesAutoresizingMaskIntoConstraints="NO" id="1OV-ty-uJK">
+                        <rect key="frame" x="7" y="180" width="144" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="ms1-Vd-65E"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" red="0.18039215689999999" green="0.4941176471" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="1OV-ty-uJK" secondAttribute="bottom" id="0u1-pU-nxQ"/>
+                <constraint firstItem="KhL-CF-Vyo" firstAttribute="leading" secondItem="Qu8-8g-pcj" secondAttribute="leading" constant="7" id="GZv-kl-eAO"/>
+                <constraint firstItem="KhL-CF-Vyo" firstAttribute="top" secondItem="Qu8-8g-pcj" secondAttribute="top" constant="3" id="Idz-aa-Zhc"/>
+                <constraint firstAttribute="trailing" secondItem="KhL-CF-Vyo" secondAttribute="trailing" constant="8" id="KPE-P4-dyK"/>
+                <constraint firstItem="1OV-ty-uJK" firstAttribute="leading" secondItem="Qu8-8g-pcj" secondAttribute="leading" constant="7" id="NVa-b7-h71"/>
+                <constraint firstItem="1OV-ty-uJK" firstAttribute="top" secondItem="KhL-CF-Vyo" secondAttribute="bottom" constant="8" id="gXF-BF-AVD"/>
+                <constraint firstAttribute="trailing" secondItem="1OV-ty-uJK" secondAttribute="trailing" constant="8" id="hpN-1T-hf6"/>
+            </constraints>
+            <size key="customSize" width="159" height="220"/>
+            <connections>
+                <outlet property="pubDateLabel" destination="1OV-ty-uJK" id="VTF-Eq-khu"/>
+                <outlet property="titleLabel" destination="KhL-CF-Vyo" id="gR8-zZ-Vxz"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

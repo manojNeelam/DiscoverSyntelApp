@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TechnologyOfferingsUrl</key>
+	<array>
+		<string>http://syntelinc.com/technology-services/application-lifecycle</string>
+		<string>http://syntelinc.com/technology-services/business-intelligence-and-analytics</string>
+		<string>http://syntelinc.com/technology-services/cloud</string>
+		<string>http://www.syntelinc.com/digitalone/</string>
+		<string>http://syntelinc.com/technology-services/enterprise-solutions</string>
+		<string>http://syntelinc.com/technology-services/it-infrastructure-management</string>
+		<string>http://syntelinc.com/technology-services/mobility-solutions</string>
+		<string>http://syntelinc.com/technology-services/testing</string>
+	</array>
+	<key>IndustryOfferingsUrl</key>
+	<array>
+		<string>http://syntelinc.com/industry-solutions/banking-and-financial-services</string>
+		<string>http://syntelinc.com/industry-solutions/healthcare-and-life-sciences</string>
+		<string>http://syntelinc.com/industry-solutions/insurance</string>
+		<string>http://syntelinc.com/industry-solutions/logistics</string>
+		<string>http://syntelinc.com/industry-solutions/manufacturing</string>
+		<string>http://syntelinc.com/industry-solutions/retail</string>
+		<string>http://syntelinc.com/industry-solutions/telecom</string>
+	</array>
+</dict>
+</plist>

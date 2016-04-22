@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0C1308E9-7C1C-4941-86C3-0BAB80E407A6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DiscoverSyntelApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CB5BD92E-D739-46A8-B294-027ACBBCDC79</key>
+		<string>https://syntwdd0505.syntelorg.com:8443/svn/iOS/trunk/FNOL-Latest-Online</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>universal_16may14/DiscoverSyntelApp/DiscoverSyntelApp.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CB5BD92E-D739-46A8-B294-027ACBBCDC79</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>CB5BD92E-D739-46A8-B294-027ACBBCDC79</key>
+		<string>https://syntwdd0505.syntelorg.com:8443/svn/iOS</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://syntwdd0505.syntelorg.com:8443/svn/iOS/trunk/FNOL-Latest-Online/universal_16may14/DiscoverSyntelApp/DiscoverSyntelApp.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CB5BD92E-D739-46A8-B294-027ACBBCDC79</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CB5BD92E-D739-46A8-B294-027ACBBCDC79</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iPhonePrograms1</string>
+		</dict>
+	</array>
+</dict>
+</plist>
