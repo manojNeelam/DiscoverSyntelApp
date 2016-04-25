@@ -26,7 +26,7 @@
     
     [self.lblTitle setText:aData.title];
     
-    if(aData.contact && aData.contact != nil)
+    if(aData.contact && aData.contact != nil && ![aData.contact isEqualToString:@""])
     {
         
         [self.lblContactNUmber setHidden:NO];
@@ -48,8 +48,7 @@
     }
     
     [self.lblCompany setText:aData.companyName];
-    [self.lblAddress setText:aData.address];
-    [self.lblStreet setText:aData.street];
+    [self.lblAddress setText:aData.street];
 }
 
 -(void)cleanCell
@@ -58,7 +57,6 @@
     [self.lblContactNUmber setText:@""];
     [self.lblCompany setText:@""];
     [self.lblAddress setText:@""];
-    [self.lblStreet setText:@""];
 }
 
 @end

@@ -11,5 +11,7 @@
 @interface contactHeaderiPadView : UICollectionReusableView
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblSep;
+@property (weak, nonatomic) IBOutlet UIButton *btnToggleCell;
+@property (weak, nonatomic) IBOutlet UIImageView *imgToggle;
 
 @end

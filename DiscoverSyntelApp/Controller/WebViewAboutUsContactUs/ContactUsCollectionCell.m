@@ -17,8 +17,24 @@
     [self.lblTitle setText:syntelAddressData.title];
     [self.lblCompanyName setText:syntelAddressData.companyName];
     [self.lblStreet setText:syntelAddressData.street];
-    [self.lblAddress setText:syntelAddressData.address];
-    [self.lblContact setText:syntelAddressData.contact];
+    
+    if(syntelAddressData.contact && syntelAddressData.contact != nil && ![syntelAddressData.contact isEqualToString:@""])
+    {
+        [self.lblTel setHidden:NO];
+        [self.lblContact setHidden:NO];
+        NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:syntelAddressData.contact];
+        [attributeString addAttribute:NSUnderlineStyleAttributeName
+                                value:[NSNumber numberWithInt:1]
+                                range:(NSRange){0,[attributeString length]}];
+        
+        
+        [self.lblContact setAttributedText:attributeString];
+    }
+    else
+    {
+        [self.lblTel setHidden:YES];
+        [self.lblContact setHidden:YES];
+    }
 }
 
 -(void)clearCell
@@ -26,7 +42,6 @@
     [self.lblTitle setText:@""];
     [self.lblCompanyName setText:@""];
     [self.lblStreet setText:@""];
-    [self.lblAddress setText:@""];
     [self.lblContact setText:@""];
 }
 

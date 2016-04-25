@@ -15,9 +15,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
 @property (weak, nonatomic) IBOutlet UILabel *lblContactNUmber;
 @property (weak, nonatomic) IBOutlet UILabel *lblTel;
-@property (weak, nonatomic) IBOutlet UILabel *lblStreet;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrStreetHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTitleHeight;
 
 -(void)populateData:(SyntelAddressData *)aData;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCompanyNameHeight;
 
 @end

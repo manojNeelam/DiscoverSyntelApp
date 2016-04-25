@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Mobile Computing. All rights reserved.
 //
 #define DefaultHeight 145
-
+#define OpenDropDown    @"openDropDown"
+#define CloseDropDown   @"closeDropDown"
 
 #import "WebViewController.h"
 #import "DataConnection.h"
@@ -36,8 +37,13 @@
 {
     [super viewDidLoad];
     
-    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.addressCollectionView.collectionViewLayout;
-    collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.addressCollectionView setBackgroundColor:[UIColor whiteColor]];
+    
+    //[UIColor colorWithRed:211.0f/255.0f green:211.0f/255.0f blue:211.0f/255.0f alpha:0.8]];
+    
+    //UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.addressCollectionView.collectionViewLayout;
+    //collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
     
     
     self.title=self.strWebViewTitle;
@@ -192,7 +198,10 @@
     if(listOfCountry.count)
     {
         ContactContentData *contactContentData = [listOfCountry objectAtIndex:section];
-        return contactContentData.addressList.count;
+        if(contactContentData.isOpen)
+        {
+            return contactContentData.addressList.count;
+        }
     }
     
     return 0;
@@ -204,7 +213,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
-    CGSize headerSize = CGSizeMake(320, 44);
+    CGSize headerSize = CGSizeMake(collectionView.frame.size.width, 0);
     return headerSize;
 }
 
@@ -212,6 +221,12 @@
 {
     static NSString *CellIdentifier = @"ContactUsCollectionCell_iPad";
     ContactUsCollectionCell *Cell = (ContactUsCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickCall:)];
+    [Cell.lblContact setTag:indexPath.row];
+    [Cell.lblContact setUserInteractionEnabled:YES];
+    [Cell.lblContact addGestureRecognizer:tapGesture];
+    
+    
     
     ContactContentData *contactData = [listOfCountry objectAtIndex:indexPath.section];
     
@@ -219,6 +234,14 @@
     
     [Cell populateData:addressData];
     
+    if(contactData.addressList.count == indexPath.row+1)
+    {
+        Cell.constraintLblSepWidth.constant = 5.0f;
+    }
+    else
+    {
+        Cell.constraintLblSepWidth.constant = 0.0f;
+    }
     
     CGFloat heightStreet = [self getStreetSize:Cell.lblStreet street:addressData.street];
     
@@ -227,22 +250,24 @@
         Cell.constraintStreetHeight.constant = ceilf(heightStreet);
     }
     
-    CGFloat heightAddress = [self getStreetSize:Cell.lblAddress street:addressData.address];
-    
-    if(heightAddress > 20)
-    {
-        Cell.constraintAddressHeight.constant = ceilf(heightAddress);
-    }
-    
     CGFloat heightTitle = [self getStreetSize:Cell.lblTitle street:addressData.title];
     
-    if(heightTitle > 20)
+    if(heightTitle > 42)
     {
         Cell.constraintTitleHeight.constant = ceilf(heightTitle);
     }
     
     
     return Cell;
+}
+
+-(void)onClickCall:(UIGestureRecognizer *)aGesture
+{
+    UILabel *lbl = (UILabel *)aGesture.view;
+    NSString *phoneStr = [[NSString alloc] initWithFormat:@"tel:%@",lbl.text];
+    NSURL *phoneURL = [[NSURL alloc] initWithString:phoneStr];
+    [[UIApplication sharedApplication] openURL:phoneURL];
+    NSLog(@"%@", lbl);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -268,7 +293,7 @@
 //    }
 //    
     CGSize size = collectionView.frame.size;
-    return CGSizeMake((size.width-30)/3, DefaultHeight + 80);
+    return CGSizeMake((size.width)/3, DefaultHeight + 100);
 }
 
 -(CGFloat)getStreetSize:(UILabel *)myLabel street:(NSString *)aStreet
@@ -286,8 +311,6 @@
      lineBreakMode:NSLineBreakByWordWrapping].height/16;*/
 }
 
-
-
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionReusableView *reusableview = nil;
@@ -298,9 +321,22 @@
     
         [headerView.lblTitle setBackgroundColor:[UIColor colorWithRed:211.0f/255.0f green:211.0f/255.0f blue:211.0f/255.0f alpha:0.8]];
         [headerView.lblTitle setTextColor:[UIColor colorWithRed:0.0f/255.0f green:143.0f/255.0f blue:161.0f/255.0f alpha:1.0f]];
-        
-        
-        ContactContentData *contactData = [listOfCountry objectAtIndex:indexPath.section];
+    
+    [headerView.btnToggleCell setTag:indexPath.section];
+    [headerView.btnToggleCell addTarget:self action:@selector(onClickHeaderView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    ContactContentData *contactData = [listOfCountry objectAtIndex:indexPath.section];
+    
+    NSString *imgName = OpenDropDown;
+    if(contactData.isOpen)
+    {
+        imgName = CloseDropDown;
+    }
+    
+    [headerView.imgToggle setImage:[UIImage imageNamed:imgName]];
+    
+    
         [headerView.lblSep setBackgroundColor:[UIColor colorWithRed:0.0f/255.0f green:143.0f/255.0f blue:161.0f/255.0f alpha:1.0f]];
         
         headerView.lblTitle.text = contactData.countryTitle;
@@ -308,6 +344,14 @@
         reusableview = headerView;
     //}
     return reusableview;
+}
+
+-(void)onClickHeaderView:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    ContactContentData *data = [listOfCountry objectAtIndex:btn.tag];
+    data.isOpen = !data.isOpen;
+    [self.addressCollectionView reloadData];
 }
 
 @end

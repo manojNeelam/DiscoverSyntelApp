@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Mobile Computing. All rights reserved.
 //
 
-#define DefaultHeight 141
+#define DefaultHeight 121
 #define OpenDropDown    @"openDropDown"
 #define CloseDropDown   @"closeDropDown"
 
@@ -40,6 +40,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.contactTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
     [self.contactTableView setDelegate:self];
     [self.contactTableView setDataSource:self];
@@ -227,7 +229,6 @@
     static NSString *CellIdentifier = @"ConatctContentCell";
     ConatctContentCell *Cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    [Cell.lblStreet setNumberOfLines:0];
     [Cell.lblAddress setNumberOfLines:0];
     
     ContactContentData *contactData = [listOfCountry objectAtIndex:indexPath.section];
@@ -240,15 +241,41 @@
     
     [Cell populateData:addressData];
     
-    CGFloat heightStreet = [self getStreetSize:Cell.lblStreet street:Cell.lblStreet.text];
+    
     float additionalHeight;
     
-    if(heightStreet > 20)
+    CGFloat heightTitle = [self getStreetSize:Cell.lblTitle street:Cell.lblTitle.text];
+    if(heightTitle > 21)
     {
-        additionalHeight = (heightStreet - 20);
-        Cell.constrStreetHeight.constant = ceilf(heightStreet);
+        additionalHeight = (heightTitle - 21);
+        Cell.constraintTitleHeight.constant = ceilf(heightTitle) + 1;
+    }
+    else
+    {
+        Cell.constraintTitleHeight.constant = 21.0f;
     }
     
+    CGFloat heightCompanyName = [self getStreetSize:Cell.lblCompany street:Cell.lblCompany.text];
+    if(heightCompanyName > 21)
+    {
+        additionalHeight = (heightCompanyName - 21);
+        Cell.constraintCompanyNameHeight.constant = ceilf(heightCompanyName) + 1;
+    }
+    else
+    {
+        Cell.constraintCompanyNameHeight.constant = 21.0f;
+    }
+
+    
+    
+    
+    //float heightStreet;
+ 
+//    if(heightStreet > 20)
+//    {
+//        additionalHeight = (heightStreet - 20);
+//        Cell.constrStreetHeight.constant = ceilf(heightStreet);
+//    }
     
     return Cell;
 }
@@ -287,7 +314,14 @@
     
     UIImageView *img = [[UIImageView alloc] init];
     [img setFrame:CGRectMake(tableView.frame.size.width-60, 13, 15, 15)];
-    [img setImage:[UIImage imageNamed:OpenDropDown]];
+    
+    NSString *imgName = OpenDropDown;
+    if(contactData.isOpen)
+    {
+        imgName = CloseDropDown;
+    }
+    
+    [img setImage:[UIImage imageNamed:imgName]];
     [headerView addSubview:img];
     
     
@@ -301,7 +335,6 @@
     NSURL *phoneURL = [[NSURL alloc] initWithString:phoneStr];
     [[UIApplication sharedApplication] openURL:phoneURL];
     NSLog(@"%@", lbl);
-    
 }
 
 -(void)onClickHeaderView:(id)sender
@@ -324,27 +357,30 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ContactContentData *contactData = [listOfCountry objectAtIndex:indexPath.section];
-    
-    SyntelAddressData *addressData = [contactData.addressList objectAtIndex:indexPath.row];
-    
     ConatctContentCell *cell = (ConatctContentCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
     
     float additionalHeight;
+    additionalHeight = 0.0f;
     
-    CGFloat heightStreet = [self getStreetSize:cell.lblStreet street:cell.lblStreet.text];
-    if(heightStreet > 20)
+    CGFloat heightTitle = [self getStreetSize:cell.lblTitle street:cell.lblTitle.text];
+    if(heightTitle > 20)
     {
-        additionalHeight = (heightStreet - 20);
-        cell.constrStreetHeight.constant = ceilf(heightStreet);
+        additionalHeight = ceilf(heightTitle - 21.0f);
+    }
+    
+    CGFloat heightCompanyName = [self getStreetSize:cell.lblCompany street:cell.lblCompany.text];
+    if(heightCompanyName > 20)
+    {
+        additionalHeight = ceilf(additionalHeight + (heightCompanyName - 21.0f));
     }
     
     CGFloat heightAddress = [self getStreetSize:cell.lblAddress street:cell.lblAddress.text];
     
-    if(heightAddress > 20)
+    if(heightAddress > 21)
     {
-        additionalHeight = additionalHeight + (heightAddress - 20);
+        additionalHeight = ceilf(additionalHeight + (heightAddress - 21.0f));
     }
+    
     return DefaultHeight + additionalHeight;
 }
 

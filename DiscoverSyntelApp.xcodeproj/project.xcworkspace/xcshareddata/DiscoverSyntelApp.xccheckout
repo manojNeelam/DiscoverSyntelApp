@@ -10,36 +10,31 @@
 	<string>DiscoverSyntelApp</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CB5BD92E-D739-46A8-B294-027ACBBCDC79</key>
-		<string>https://syntwdd0505.syntelorg.com:8443/svn/iOS/trunk/FNOL-Latest-Online</string>
+		<key>E77085EE01BD7AD4CC06EB0789BF0B4C64AC8C57</key>
+		<string>https://github.com/manojNeelam/DiscoverSyntelApp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>universal_16may14/DiscoverSyntelApp/DiscoverSyntelApp.xcodeproj/project.xcworkspace</string>
+	<string>DiscoverSyntelApp.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CB5BD92E-D739-46A8-B294-027ACBBCDC79</key>
-		<string>../../../..</string>
-	</dict>
-	<key>IDESourceControlProjectRepositoryRootDictionary</key>
-	<dict>
-		<key>CB5BD92E-D739-46A8-B294-027ACBBCDC79</key>
-		<string>https://syntwdd0505.syntelorg.com:8443/svn/iOS</string>
+		<key>E77085EE01BD7AD4CC06EB0789BF0B4C64AC8C57</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://syntwdd0505.syntelorg.com:8443/svn/iOS/trunk/FNOL-Latest-Online/universal_16may14/DiscoverSyntelApp/DiscoverSyntelApp.xcodeproj</string>
+	<string>https://github.com/manojNeelam/DiscoverSyntelApp.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CB5BD92E-D739-46A8-B294-027ACBBCDC79</string>
+	<string>E77085EE01BD7AD4CC06EB0789BF0B4C64AC8C57</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.subversion</string>
+			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CB5BD92E-D739-46A8-B294-027ACBBCDC79</string>
+			<string>E77085EE01BD7AD4CC06EB0789BF0B4C64AC8C57</string>
 			<key>IDESourceControlWCCName</key>
-			<string>iPhonePrograms1</string>
+			<string>DiscoverSyntelApp</string>
 		</dict>
 	</array>
 </dict>
