@@ -9,6 +9,7 @@
 #import "ContentViewController.h"
 
 @interface ContentViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *lblVersion;
 
 @end
 
@@ -27,6 +28,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+    NSString *shortVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
+    
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    NSString *date = app.xmlDate;
+    if(date && date != nil)
+    {
+        date = [date stringByReplacingOccurrencesOfString:@":" withString:@""];
+        date = [date stringByReplacingOccurrencesOfString:@" " withString:@""];
+        date = [date stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    }
+
+    
+    [self.lblVersion setText:[NSString stringWithFormat:@"Version : %@ #%@", shortVersion, date]];
+    
     isMenuSelected=NO;
     if ([pageIdentifier isEqualToString:@"HomeViewController"]) {
         button1.tag=4;

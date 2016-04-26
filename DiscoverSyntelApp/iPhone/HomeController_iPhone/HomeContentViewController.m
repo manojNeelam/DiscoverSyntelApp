@@ -14,6 +14,7 @@
 #import "UIImageView+JMImageCache.h"
 #import "Common.h"
 @interface HomeContentViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *lblVersion;
 
 @end
 
@@ -43,7 +44,20 @@
     
     // Do any additional setup after loading the view.
     
+    NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+    NSString *shortVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
     
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    NSString *date = app.xmlDate;
+    if(date && date != nil)
+    {
+        date = [date stringByReplacingOccurrencesOfString:@":" withString:@""];
+        date = [date stringByReplacingOccurrencesOfString:@" " withString:@""];
+        date = [date stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    }
+
+    
+    [self.lblVersion setText:[NSString stringWithFormat:@"Version : %@ #%@", shortVersion, date]];
     
     
   

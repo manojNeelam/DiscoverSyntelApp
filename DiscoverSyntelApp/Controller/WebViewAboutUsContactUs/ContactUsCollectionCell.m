@@ -12,7 +12,7 @@
 
 -(void)populateData:(SyntelAddressData *)syntelAddressData
 {
-    [self clearCell];
+    //[self clearCell];
     
     [self.lblTitle setText:syntelAddressData.title];
     [self.lblCompanyName setText:syntelAddressData.companyName];

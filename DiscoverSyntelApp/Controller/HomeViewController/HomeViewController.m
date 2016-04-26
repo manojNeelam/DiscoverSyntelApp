@@ -14,6 +14,7 @@
 #import "Common.h"
 
 @interface HomeViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *lblVersion;
 
 @end
 
@@ -261,6 +262,19 @@
     
     }
     
+    NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+    NSString *shortVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
+    
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    NSString *date = app.xmlDate;
+    if(date && date != nil)
+    {
+        date = [date stringByReplacingOccurrencesOfString:@":" withString:@""];
+        date = [date stringByReplacingOccurrencesOfString:@" " withString:@""];
+        date = [date stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    }
+    
+    [self.lblVersion setText:[NSString stringWithFormat:@"Version : %@ #%@", shortVersion, date]];
 }
 
 

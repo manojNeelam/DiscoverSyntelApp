@@ -16,6 +16,7 @@
 #define MIN_SWIPE 1
 
 @interface HomeViewControllerIphone ()
+
 @property (assign, nonatomic) int previousIndex;
 @property (assign, nonatomic) int tentativeIndex;
 @property (assign, nonatomic) BOOL observerAdded;
@@ -40,6 +41,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    
      self.previousIndex = MIN_SWIPE;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onHomeMenuOptionSelection:) name:@"NotificationHomeMenu" object:nil];
     

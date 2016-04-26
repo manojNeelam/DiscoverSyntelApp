@@ -5,7 +5,11 @@
 //  Created by Mobile Computing on 4/18/14.
 //  Copyright (c) 2014 Mobile Computing. All rights reserved.
 //
+
+#define Columns 3
+
 #define DefaultHeight 145
+#define DefaultWidth 260
 #define OpenDropDown    @"openDropDown"
 #define CloseDropDown   @"closeDropDown"
 
@@ -19,6 +23,8 @@
 @interface WebViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 {
     NSArray *listOfCountry;
+    
+    int currentCell;
 }
 @end
 
@@ -38,6 +44,8 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
+
+    
     [self.addressCollectionView setBackgroundColor:[UIColor whiteColor]];
     
     //[UIColor colorWithRed:211.0f/255.0f green:211.0f/255.0f blue:211.0f/255.0f alpha:0.8]];
@@ -134,6 +142,12 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.view layoutIfNeeded];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -221,44 +235,39 @@
 {
     static NSString *CellIdentifier = @"ContactUsCollectionCell_iPad";
     ContactUsCollectionCell *Cell = (ContactUsCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    [Cell layoutIfNeeded];
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickCall:)];
     [Cell.lblContact setTag:indexPath.row];
     [Cell.lblContact setUserInteractionEnabled:YES];
     [Cell.lblContact addGestureRecognizer:tapGesture];
     
     
-    
     ContactContentData *contactData = [listOfCountry objectAtIndex:indexPath.section];
     
     SyntelAddressData *addressData = [contactData.addressList objectAtIndex:indexPath.row];
     
+    CGFloat heightTitle = ceilf([self getStreetSize:Cell.lblTitle street:addressData.title]);
+    Cell.constraintTitleHeight.constant = ceilf(heightTitle);
+    
+    CGFloat heightCompany = ceilf([self getStreetSize:Cell.lblCompanyName street:addressData.companyName]);
+    Cell.constraintComapnyHeight.constant = ceilf(heightCompany);
+
+    CGFloat heightStreet = ceilf([self getStreetSize:Cell.lblStreet street:addressData.street]);
+     Cell.constraintStreetHeight.constant = ceilf(heightStreet);
+    
     [Cell populateData:addressData];
-    
-    if(contactData.addressList.count == indexPath.row+1)
-    {
-        Cell.constraintLblSepWidth.constant = 5.0f;
-    }
-    else
-    {
-        Cell.constraintLblSepWidth.constant = 0.0f;
-    }
-    
-    CGFloat heightStreet = [self getStreetSize:Cell.lblStreet street:addressData.street];
-    
-    if(heightStreet > 20)
-    {
-        Cell.constraintStreetHeight.constant = ceilf(heightStreet);
-    }
-    
-    CGFloat heightTitle = [self getStreetSize:Cell.lblTitle street:addressData.title];
-    
-    if(heightTitle > 42)
-    {
-        Cell.constraintTitleHeight.constant = ceilf(heightTitle);
-    }
-    
-    
+
     return Cell;
+}
+
+-(CGFloat)getStreetSize:(UILabel *)myLabel street:(NSString *)aStreet
+{
+    CGSize labelSize = [aStreet sizeWithFont:myLabel.font
+                           constrainedToSize:CGSizeMake(myLabel.frame.size.width, CGFLOAT_MAX)
+                               lineBreakMode:NSLineBreakByWordWrapping];
+    CGFloat labelHeight = ceilf(labelSize.height);
+    return labelHeight;
 }
 
 -(void)onClickCall:(UIGestureRecognizer *)aGesture
@@ -275,31 +284,41 @@
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-   // ContactUsCollectionCell *cell = (ContactUsCollectionCell *)[self collectionView:self.addressCollectionView cellForItemAtIndexPath:indexPath];
+    float index = floorf(indexPath.row/Columns) + 1;
+    if(currentCell)
+    {
+        
+    }
+    else
+    {
+        currentCell = (int)indexPath.row+1;
+    }
     
-//    float additionalHeight;
-//    
-//    CGFloat heightStreet = [self getStreetSize:cell.lblStreet street:cell.lblStreet.text];
-//    if(heightStreet > 20)
-//    {
-//        additionalHeight = (heightStreet - 20);
-//    }
-//    
-//    CGFloat heightAddress = [self getStreetSize:cell.lblAddress street:cell.lblAddress.text];
-//    
-//    if(heightAddress > 20)
-//    {
-//        additionalHeight = additionalHeight + (heightAddress - 20);
-//    }
-//    
+    if(index == currentCell)
+    {
+     
+    }
+    
     CGSize size = collectionView.frame.size;
-    return CGSizeMake((size.width)/3, DefaultHeight + 100);
+    return CGSizeMake((size.width-3)/3, DefaultHeight + 150); //+ additionalHeight;
 }
 
--(CGFloat)getStreetSize:(UILabel *)myLabel street:(NSString *)aStreet
+-(float)getGreaterHeightfrom:(int)index
 {
-    CGSize labelSize = [aStreet sizeWithFont:myLabel.font
-                           constrainedToSize:CGSizeMake(myLabel.frame.size.width, CGFLOAT_MAX)
+    float height = 0.0;
+    
+    for(int i=0; i<Columns; i++)
+    {
+        
+    }
+    return height;
+}
+
+
+-(CGFloat)getStreetSize:(UIFont *)myLabelFont withWidth:(float)width street:(NSString *)aStreet
+{
+    CGSize labelSize = [aStreet sizeWithFont:myLabelFont
+                           constrainedToSize:CGSizeMake(width, CGFLOAT_MAX)
                                lineBreakMode:NSLineBreakByWordWrapping];
     
     CGFloat labelHeight = ceilf(labelSize.height);
@@ -351,6 +370,11 @@
     UIButton *btn = (UIButton *)sender;
     ContactContentData *data = [listOfCountry objectAtIndex:btn.tag];
     data.isOpen = !data.isOpen;
+    [self performSelector:@selector(reloadCollData) withObject:nil afterDelay:0.1];
+}
+
+-(void)reloadCollData
+{
     [self.addressCollectionView reloadData];
 }
 

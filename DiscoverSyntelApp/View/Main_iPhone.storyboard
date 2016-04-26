@@ -654,6 +654,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BGIphone.png" translatesAutoresizingMaskIntoConstraints="NO" id="87s-YE-qUK">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haJ-R0-EVE">
+                                <rect key="frame" x="20" y="431" width="280" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="6MJ-Sw-tdF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaB-gX-CLE">
                                 <rect key="frame" x="14" y="290" width="293" height="129"/>
                                 <state key="normal" backgroundImage="ThoughtLeadershipIphone.png">
@@ -699,9 +708,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="haJ-R0-EVE" firstAttribute="leading" secondItem="L0O-pK-uDa" secondAttribute="leading" constant="20" id="7Z9-UL-vfh"/>
                             <constraint firstItem="B8r-uc-TrX" firstAttribute="leading" secondItem="L0O-pK-uDa" secondAttribute="leading" constant="113" id="RLB-26-Tyd"/>
                             <constraint firstAttribute="trailing" secondItem="B8r-uc-TrX" secondAttribute="trailing" constant="113" id="ZoY-KD-Jyj"/>
                             <constraint firstItem="SRP-QF-x9Q" firstAttribute="top" secondItem="B8r-uc-TrX" secondAttribute="bottom" id="nJX-mg-Em7"/>
+                            <constraint firstAttribute="bottom" secondItem="haJ-R0-EVE" secondAttribute="bottom" constant="28" id="nU8-gb-i89"/>
+                            <constraint firstAttribute="trailing" secondItem="haJ-R0-EVE" secondAttribute="trailing" constant="20" id="opT-FJ-YxY"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -710,6 +722,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="bannerImage" destination="5fx-tN-XK1" id="CDI-sb-Lcw"/>
+                        <outlet property="lblVersion" destination="haJ-R0-EVE" id="6FJ-dO-aqw"/>
                         <outlet property="otlLblFlip" destination="B8r-uc-TrX" id="AiG-Ue-rw5"/>
                     </connections>
                 </viewController>
@@ -729,7 +742,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BGIphone.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fm0-KM-Eh7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="BGIphone.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fm0-KM-Eh7">
                                 <rect key="frame" x="0.0" y="61" width="320" height="568"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Kll-aX-T9h">
@@ -1075,10 +1088,22 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wt3-X4-eXo">
+                                <rect key="frame" x="20" y="431" width="280" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="MN2-W3-6bt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jAa-np-7C9" secondAttribute="trailing" constant="114" id="0Aa-3X-gY3"/>
+                            <constraint firstAttribute="trailing" secondItem="wt3-X4-eXo" secondAttribute="trailing" constant="20" id="3T4-I6-Csh"/>
+                            <constraint firstAttribute="bottom" secondItem="wt3-X4-eXo" secondAttribute="bottom" constant="28" id="51z-Nv-OaF"/>
+                            <constraint firstItem="wt3-X4-eXo" firstAttribute="leading" secondItem="vLK-pM-CxO" secondAttribute="leading" constant="20" id="9Q6-ND-ZsM"/>
                             <constraint firstAttribute="trailing" secondItem="Hcw-cI-Rhz" secondAttribute="trailing" id="FHi-A3-H2p"/>
                             <constraint firstItem="Hcw-cI-Rhz" firstAttribute="leading" secondItem="vLK-pM-CxO" secondAttribute="leading" id="NuH-fP-dG9"/>
                             <constraint firstItem="H3K-Im-oeS" firstAttribute="leading" secondItem="vLK-pM-CxO" secondAttribute="leading" constant="112" id="a8r-yd-gvH"/>
@@ -1096,6 +1121,7 @@
                         <outlet property="button2" destination="BUe-Kz-zno" id="joo-fm-jWT"/>
                         <outlet property="button3" destination="aQi-ib-ayq" id="REz-ed-ytI"/>
                         <outlet property="button4" destination="zBO-lq-apH" id="6F0-c1-4nn"/>
+                        <outlet property="lblVersion" destination="wt3-X4-eXo" id="K0P-HT-bjE"/>
                         <outlet property="otlLblFlip" destination="jAa-np-7C9" id="iix-Y7-Xfh"/>
                         <outlet property="otlLblPage" destination="H3K-Im-oeS" id="87X-4l-2cr"/>
                     </connections>

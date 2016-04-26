@@ -22,6 +22,7 @@
 
 -(void)populateData:(SyntelAddressData *)syntelAddressData;
 @property (weak, nonatomic) IBOutlet UILabel *lblTel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintComapnyHeight;
 
 
 @end
