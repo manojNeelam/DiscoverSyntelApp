@@ -161,9 +161,6 @@
 }
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    
-    
-    
     return YES;
 }
 
@@ -177,6 +174,7 @@
 {
     [otlWebViewIndustryOfferings goForward];
 }
+
 -(IBAction)onClickShare:(id)sender
 {
     NSString *strTinyUrlShare;
@@ -195,10 +193,18 @@
     [[UIActivityViewController alloc]
      initWithActivityItems:activityItems applicationActivities:nil];
     activityController.excludedActivityTypes = @[UIActivityTypeCopyToPasteboard];
-    [self presentViewController:activityController
-                       animated:YES completion:nil];
+    
+    
+    UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:activityController];
+    [popup presentPopoverFromRect:CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/4, 0, 0)inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+    
+   // [self presentViewController:activityController
+              //         animated:YES completion:nil];
     
 }
+
+
 -(IBAction)onClickFavourite:(UIButton*)sender
 {
     //save url,title,pubdate n local file path

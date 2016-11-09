@@ -39,6 +39,7 @@
     DataConnection *objData=[[DataConnection alloc]init];
     self.isOnline=[objData networkConnection];
     if(self.isOnline){
+        
         // 3a-Check for new xml, 3b-parse timestamp
         
         //3c- Compare timestamp

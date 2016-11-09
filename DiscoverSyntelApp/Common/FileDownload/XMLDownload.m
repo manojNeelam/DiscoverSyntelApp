@@ -41,6 +41,9 @@
             NSURL *tmpDir = [[documentDirURL URLByDeletingLastPathComponent] URLByAppendingPathComponent:@"Library/Caches" isDirectory:YES];
           
             NSString *documentPath = [tmpDir path];
+            
+             [self checkDirExistandCreate:[documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",targetPathStr]]];
+            
             NSString* filePath =[documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/WebContent2.xml",targetPathStr]];
             BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
             if (fileExists) {
@@ -59,6 +62,7 @@
             NSURL *tmpDir = [[documentDirURL URLByDeletingLastPathComponent] URLByAppendingPathComponent:@"Library/Caches" isDirectory:YES];
             NSString *documentPath = [tmpDir path];
 
+             [self checkDirExistandCreate:[documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",targetPathStr]]];
             
             NSString* filePath =[documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@",targetPathStr,[URLToFileName lastPathComponent]]];
             
@@ -78,6 +82,9 @@
             NSURL *documentDirURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
             NSURL *tmpDir = [[documentDirURL URLByDeletingLastPathComponent] URLByAppendingPathComponent:@"Library/Caches" isDirectory:YES];
             NSString *documentPath = [tmpDir path];
+            
+            [self checkDirExistandCreate:[documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",targetPathStr]]];
+                                                                     
 
             NSString* filePath =[documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@",targetPathStr,[URLToFileName lastPathComponent]]];
             
@@ -97,6 +104,8 @@
          //   NSURL *tmpDir = [[documentDirURL URLByDeletingLastPathComponent] URLByAppendingPathComponent:@"tmp" isDirectory:YES];
             NSString *documentPath = [documentDirURL path];
 
+             [self checkDirExistandCreate:[documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",targetPathStr]]];
+            
             NSString* filePath =[documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"Webcontent/%@",targetPathStr]];
             
             BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
@@ -238,6 +247,29 @@
        
     
 }
+
+-(void)checkDirExistandCreate:(NSString*)path
+{
+    /*NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = [paths objectAtIndex:0];
+    NSString *folderPathString;
+    
+    if ([strUrl rangeOfString:@"xml"].location != NSNotFound){
+        folderPathString=[documentPath stringByAppendingPathComponent:@"xml"];
+    }
+    else
+    {
+        folderPathString=[documentPath stringByAppendingPathComponent:@"Download"];
+    }*/
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    
+}
+
+
 #pragma mark - UIAlertview Delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
