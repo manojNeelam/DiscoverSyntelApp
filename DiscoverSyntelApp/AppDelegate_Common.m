@@ -5,6 +5,7 @@
 //  Created by Mobile Computing on 5/16/14.
 //  Copyright (c) 2014 Mobile Computing. All rights reserved.
 //
+#define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 #import "AppDelegate_Common.h"
 #import <SystemConfiguration/SystemConfiguration.h>
@@ -73,6 +74,8 @@
         
         
         //For iOS 8 device reg code changes by Amar
+        
+        [self registerForRemoteNotifications];
         
         if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
         {
@@ -352,6 +355,11 @@
 
 -(void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    [self pushnotificationReceived:application];
+}
+
+-(void)pushnotificationReceived:(UIApplication *)application
+{
     if ( application.applicationState == UIApplicationStateActive)
     {
         [self downloadNewXMLData];
@@ -367,13 +375,13 @@
             
             
             UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        WhatsNewViewController *controller = (WhatsNewViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WhatsNewControllerIdentifier"];
-        
-        [navigationController pushViewController:controller animated:YES];
-        
+            WhatsNewViewController *controller = (WhatsNewViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WhatsNewControllerIdentifier"];
+            
+            [navigationController pushViewController:controller animated:YES];
+            
         }
         else
-     
+            
         {
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil];
             
@@ -390,7 +398,36 @@
     application.applicationIconBadgeNumber=0;
 }
 
+- (void)registerForRemoteNotifications {
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+        
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+            if(!error){
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            }
+        }];
+    }
+    else {
+        // Code for old versions
+    }
+}
 
+//Called when a notification is delivered to a foreground app.
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
+    NSLog(@"User Info : %@",notification.request.content.userInfo);
+    
+    [self pushnotificationReceived:[UIApplication sharedApplication]];
+    
+    completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+}
+
+//Called to let your app know which action was selected by the user for a given notification.
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler{
+    NSLog(@"User Info : %@",response.notification.request.content.userInfo);
+    completionHandler();
+}
 
 
 @end

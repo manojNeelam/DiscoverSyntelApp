@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate_Common : UIResponder<UIApplicationDelegate>
+@interface AppDelegate_Common : UIResponder<UIApplicationDelegate, UNUserNotificationCenterDelegate>
 {
     NSManagedObjectContext *managedObjectContext;
     NSManagedObjectModel *managedObjectModel;
     NSPersistentStoreCoordinator *persistentStoreCoordinator;
     NSString* strUserDefault;
 }
+
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
