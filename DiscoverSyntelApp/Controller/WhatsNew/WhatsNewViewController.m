@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     self.title=@"What's New";
-    AppDelegate *appDelegate=[[UIApplication sharedApplication]delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     arrDataSourceParsedDataWhatsNew=appDelegate.arrChangeSetParsedData;
     NSMutableArray *arrTempDataSource=[[NSMutableArray alloc]init];
     for (NSDictionary *objDic in arrDataSourceParsedDataWhatsNew) {
@@ -135,7 +135,7 @@
 
 -(void)whatsNewReload:(NSNotification*)notification
 {
-    AppDelegate *appDelegate=[[UIApplication sharedApplication]delegate];
+    AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
     arrDataSourceParsedDataWhatsNew=appDelegate.arrChangeSetParsedData;
     NSMutableArray *arrTempDataSource=[[NSMutableArray alloc]init];
     for (NSDictionary *objDic in arrDataSourceParsedDataWhatsNew) {

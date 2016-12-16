@@ -58,6 +58,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(NSString *)publishedDatefrom:(NSArray *)arrPubDate
+{
+    NSString *dateStr = @"";
+    
+    if(arrPubDate.count>3)
+    {
+        dateStr = [NSString stringWithFormat:@"%@ %@ %@ %@",[arrPubDate objectAtIndex:0],[arrPubDate objectAtIndex:1],[arrPubDate objectAtIndex:2],[arrPubDate objectAtIndex:3]];
+    }
+    else if (arrPubDate.count>2)
+    {
+        dateStr = [NSString stringWithFormat:@"%@ %@ %@",[arrPubDate objectAtIndex:0],[arrPubDate objectAtIndex:1],[arrPubDate objectAtIndex:2]];
+        
+    }
+    else if (arrPubDate.count>1)
+    {
+        dateStr = [NSString stringWithFormat:@"%@ %@",[arrPubDate objectAtIndex:0],[arrPubDate objectAtIndex:1]];
+        
+    }
+    else if (arrPubDate.count)
+    {
+        dateStr = [NSString stringWithFormat:@"%@",[arrPubDate objectAtIndex:0]];
+    }
+    
+    return dateStr;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -90,7 +116,12 @@
         NSArray *arrPubDate=[strPubDate componentsSeparatedByString:@" "];
         
         objWhatsNewCellController.otlLblTitle.text=[[listArray objectAtIndex:indexPath.row]valueForKey:@"Title"];
-        objWhatsNewCellController.otlLblPubDate.text=[NSString stringWithFormat:@"%@ %@ %@ %@",[arrPubDate objectAtIndex:0],[arrPubDate objectAtIndex:1],[arrPubDate objectAtIndex:2],[arrPubDate objectAtIndex:3]];
+        
+        NSString *dateStr = [self publishedDatefrom:arrPubDate];
+
+        
+        
+        objWhatsNewCellController.otlLblPubDate.text= dateStr;
         
         
      //  objWhatsNewCellController.otlLblPubDate.text=[NSString stringWithFormat:@"%@ %@ ",[arrPubDate objectAtIndex:0],[arrPubDate objectAtIndex:1]];
@@ -125,7 +156,12 @@
         NSArray *arrPubDate=[strPubDate componentsSeparatedByString:@" "];
         
         objNewsListCellController.otlLblTitle.text=[[listArray objectAtIndex:indexPath.row]valueForKey:@"Title"];
-        objNewsListCellController.otlLblPubDate.text=[NSString stringWithFormat:@"%@ %@ %@ %@",[arrPubDate objectAtIndex:0],[arrPubDate objectAtIndex:1],[arrPubDate objectAtIndex:2],[arrPubDate objectAtIndex:3]];
+        
+        NSString *dateStr = [self publishedDatefrom:arrPubDate];
+        objNewsListCellController.otlLblPubDate.text = dateStr;
+        
+        //objNewsListCellController.otlLblPubDate.text=[NSString stringWithFormat:@"%@ %@ %@ %@",[arrPubDate objectAtIndex:0],[arrPubDate objectAtIndex:1],[arrPubDate objectAtIndex:2],[arrPubDate objectAtIndex:3]];
+        
         objNewsListCellController.otlLblDescription.text=[[listArray objectAtIndex:indexPath.row]valueForKey:@"Description"];
         [objNewsListCellController.otlLblDescription sizeToFit];
           return objNewsListCellController;

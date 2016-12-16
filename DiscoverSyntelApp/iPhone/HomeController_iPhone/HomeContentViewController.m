@@ -13,8 +13,13 @@
 #import "JMImageCache.h"
 #import "UIImageView+JMImageCache.h"
 #import "Common.h"
+#import "IndustrySolutionsVC.h"
+#import "TechnologyServicesVC.h"
+
 @interface HomeContentViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *lblVersion;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cons_Left_BaseView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cons_Right_BaseView;
 
 @end
 
@@ -38,7 +43,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    self.view.frame=CGRectMake(0, 0, screenWidth, screenHeight);
     
     isMenuSelected=NO;
     
@@ -47,7 +57,7 @@
     NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
     NSString *shortVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
     
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSString *date = app.xmlDate;
     if(date && date != nil)
     {
@@ -59,11 +69,7 @@
     
     [self.lblVersion setText:[NSString stringWithFormat:@"Version : %@ #%@", shortVersion, date]];
     
-    
-  
 
-    
-    
     if(IS_IPHONE)
     {
         NSString *urlAsString = nil;
@@ -221,12 +227,18 @@
 {
     [super viewWillAppear:NO];
     isMenuSelected=NO;
+    
+    [self.view layoutIfNeeded];
+
    
 }
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:NO];
     isMenuSelected=NO;
+    
+    [self.view layoutIfNeeded];
+
 }
 - (void)didReceiveMemoryWarning
 {
@@ -255,14 +267,14 @@
 -(void)animateLabel
 {
     otlLblFlip.hidden=NO;
-    otlLblFlip.center = CGPointMake(158, 500);
+    //otlLblFlip.center = CGPointMake(158, 500);
     
     [UIView animateWithDuration:2.0f
                           delay:0.5
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^
      {
-         otlLblFlip.center = CGPointMake(158, 450);
+         //otlLblFlip.center = CGPointMake(158, 450);
      }
                      completion:nil];
 }
@@ -274,14 +286,16 @@
        ThoughtLeadershipControllerIphone *objThoughtLeadershipControllerIphone = (ThoughtLeadershipControllerIphone*)[mainStoryboard instantiateViewControllerWithIdentifier: @"ThoughtLeadershipControllerIphone"];
       [self.navigationController pushViewController:objThoughtLeadershipControllerIphone animated:YES];
    }
+        //Manoj kUMAR Dec 13 2016
    else if (sender.tag==1){
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil];
-       TechnologyOfferingsViewControllerIphone *objTechnologyOfferingsViewControllerIphone = (TechnologyOfferingsViewControllerIphone*)[mainStoryboard instantiateViewControllerWithIdentifier: @"TechnologyOfferingsViewControllerIphone"];
+       TechnologyServicesVC *objTechnologyOfferingsViewControllerIphone = (TechnologyServicesVC*)[mainStoryboard instantiateViewControllerWithIdentifier: @"TechnologyServicesVC"];
        [self.navigationController pushViewController:objTechnologyOfferingsViewControllerIphone animated:YES];
    }
+        //Manoj Kumar Dec 13 2016
    else if (sender.tag==2){
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil];
-       IndustryOfferingsViewControllerIphone *objIndustryOfferingsViewControllerIphone = (IndustryOfferingsViewControllerIphone*)[mainStoryboard instantiateViewControllerWithIdentifier: @"IndustryOfferingsViewControllerIphone"];
+       IndustrySolutionsVC *objIndustryOfferingsViewControllerIphone = (IndustrySolutionsVC*)[mainStoryboard instantiateViewControllerWithIdentifier: @"IndustrySolutionsVC"];
        [self.navigationController pushViewController:objIndustryOfferingsViewControllerIphone animated:YES];
    }
         isMenuSelected=YES;

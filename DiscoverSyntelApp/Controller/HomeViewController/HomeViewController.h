@@ -16,6 +16,9 @@
 #import "WhatsNewViewController.h"
 #import "NewsListViewController.h"
 #import "ContactUsiPadViewController.h"
+#import "IndustrySolutionsViewController.h"
+#import "TechnologyServicesViewController.h"
+
 
 @interface HomeViewController : BaseViewController
 {
@@ -24,8 +27,13 @@
     BOOL isMenuSelected;
     WebViewController *objWebViewController;
     WebViewDisplayLinks *objWebViewDisplayLinks;
-    IndustrialOfferingsViewController *objIndustrialOfferingsViewController;
-    TechnologyOfferingsViewController *objTechnologyOfferingsViewController;
+    
+    //IndustrialOfferingsViewController *objIndustrialOfferingsViewController;
+    //TechnologyOfferingsViewController *objTechnologyOfferingsViewController;
+    
+    IndustrySolutionsViewController *objIndustrialOfferingsViewController;
+    TechnologyServicesViewController *objTechnologyOfferingsViewController;
+    
     ThoughtLeaderShipViewController *objThoughtLeaderShipViewController;
     WhatsNewViewController *objWhatsNewViewController;
     NewsListViewController *objNewsListViewController;

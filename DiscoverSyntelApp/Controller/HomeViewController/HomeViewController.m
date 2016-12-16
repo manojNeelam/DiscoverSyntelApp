@@ -314,11 +314,11 @@
         [self.navigationController pushViewController:objThoughtLeaderShipViewController animated:YES];
     }
     else if (sender.tag==1){
-        objIndustrialOfferingsViewController = (IndustrialOfferingsViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"IndustryOfferingsControllerIdentifier"];
+        objIndustrialOfferingsViewController = (IndustrySolutionsViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"IndustrySolutionsViewController"];
         [self.navigationController pushViewController:objIndustrialOfferingsViewController animated:YES];
     }
     else if (sender.tag==2){
-        objTechnologyOfferingsViewController = (TechnologyOfferingsViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"TechnologyOfferingsIdentifier"];
+        objTechnologyOfferingsViewController = (TechnologyServicesViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"TechnologyServicesViewController"];
         [self.navigationController pushViewController:objTechnologyOfferingsViewController animated:YES];
     }
     else if (sender.tag==3){

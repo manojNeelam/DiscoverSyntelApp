@@ -20,6 +20,11 @@
 		8C190DBA1CC8CD0E00D15E1A /* ContactContentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C190DB91CC8CD0E00D15E1A /* ContactContentData.m */; };
 		8C190DBD1CC8CF6D00D15E1A /* SyntelAddressData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C190DBC1CC8CF6D00D15E1A /* SyntelAddressData.m */; };
 		8C190DC01CC8E3DA00D15E1A /* ContactUsCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C190DBF1CC8E3DA00D15E1A /* ContactUsCollectionCell.m */; };
+		8C63EABE1E004FCE00035BE5 /* IndustrySolutionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C63EABD1E004FCE00035BE5 /* IndustrySolutionsVC.m */; };
+		8C63EAC11E00579F00035BE5 /* IndustrySolutionsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C63EAC01E00579F00035BE5 /* IndustrySolutionsData.m */; };
+		8C63EAC41E005A7400035BE5 /* IndustrySolutionsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C63EAC31E005A7400035BE5 /* IndustrySolutionsListVC.m */; };
+		8C63EAC71E005ECC00035BE5 /* TechnologyServicesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C63EAC61E005ECC00035BE5 /* TechnologyServicesVC.m */; };
+		8C63EACA1E005F9800035BE5 /* TechnologyServicesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C63EAC91E005F9800035BE5 /* TechnologyServicesData.m */; };
 		8C6411371B04BA0D00B01377 /* app_icon_87_87.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6411341B04BA0D00B01377 /* app_icon_87_87.png */; };
 		8C6411381B04BA0D00B01377 /* app_icon_120_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6411351B04BA0D00B01377 /* app_icon_120_120.png */; };
 		8C6411391B04BA0D00B01377 /* app_icon_180_180.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6411361B04BA0D00B01377 /* app_icon_180_180.png */; };
@@ -29,6 +34,9 @@
 		8C6411411B04C37900B01377 /* BannerIphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6411401B04C37900B01377 /* BannerIphone@2x.png */; };
 		8C6411431B04C3AF00B01377 /* Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6411421B04C3AF00B01377 /* Banner.png */; };
 		8C6411451B04C3CB00B01377 /* Banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6411441B04C3CB00B01377 /* Banner@2x.png */; };
+		8CA4575D1E02D5D100475084 /* IndustrySolutionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA4575C1E02D5D100475084 /* IndustrySolutionsViewController.m */; };
+		8CA457601E02D62900475084 /* TechnologyServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA4575F1E02D62900475084 /* TechnologyServicesViewController.m */; };
+		8CA457631E02ECC300475084 /* IndustrySolutionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA457621E02ECC200475084 /* IndustrySolutionsTableViewCell.m */; };
 		8CBA41FF1AE63DFE00EFB2F6 /* BannerIphone@2x35.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CBA41FE1AE63DFE00EFB2F6 /* BannerIphone@2x35.png */; };
 		8CBA42011AE63E3800EFB2F6 /* Banner@2x35.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CBA42001AE63E3800EFB2F6 /* Banner@2x35.png */; };
 		8CBA42031AE63E4700EFB2F6 /* Banner35.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CBA42021AE63E4700EFB2F6 /* Banner35.png */; };
@@ -309,6 +317,16 @@
 		8C190DBC1CC8CF6D00D15E1A /* SyntelAddressData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntelAddressData.m; sourceTree = "<group>"; };
 		8C190DBE1CC8E3DA00D15E1A /* ContactUsCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsCollectionCell.h; sourceTree = "<group>"; };
 		8C190DBF1CC8E3DA00D15E1A /* ContactUsCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsCollectionCell.m; sourceTree = "<group>"; };
+		8C63EABC1E004FCE00035BE5 /* IndustrySolutionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndustrySolutionsVC.h; sourceTree = "<group>"; };
+		8C63EABD1E004FCE00035BE5 /* IndustrySolutionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndustrySolutionsVC.m; sourceTree = "<group>"; };
+		8C63EABF1E00579F00035BE5 /* IndustrySolutionsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndustrySolutionsData.h; sourceTree = "<group>"; };
+		8C63EAC01E00579F00035BE5 /* IndustrySolutionsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndustrySolutionsData.m; sourceTree = "<group>"; };
+		8C63EAC21E005A7400035BE5 /* IndustrySolutionsListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndustrySolutionsListVC.h; sourceTree = "<group>"; };
+		8C63EAC31E005A7400035BE5 /* IndustrySolutionsListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndustrySolutionsListVC.m; sourceTree = "<group>"; };
+		8C63EAC51E005ECC00035BE5 /* TechnologyServicesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TechnologyServicesVC.h; sourceTree = "<group>"; };
+		8C63EAC61E005ECC00035BE5 /* TechnologyServicesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TechnologyServicesVC.m; sourceTree = "<group>"; };
+		8C63EAC81E005F9800035BE5 /* TechnologyServicesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TechnologyServicesData.h; sourceTree = "<group>"; };
+		8C63EAC91E005F9800035BE5 /* TechnologyServicesData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TechnologyServicesData.m; sourceTree = "<group>"; };
 		8C6411341B04BA0D00B01377 /* app_icon_87_87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_87_87.png; sourceTree = "<group>"; };
 		8C6411351B04BA0D00B01377 /* app_icon_120_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_120_120.png; sourceTree = "<group>"; };
 		8C6411361B04BA0D00B01377 /* app_icon_180_180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_180_180.png; sourceTree = "<group>"; };
@@ -319,6 +337,12 @@
 		8C6411421B04C3AF00B01377 /* Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Banner.png; sourceTree = "<group>"; };
 		8C6411441B04C3CB00B01377 /* Banner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Banner@2x.png"; sourceTree = "<group>"; };
 		8C7FBFC11DBA36530067B18C /* DiscoverSyntelApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DiscoverSyntelApp.entitlements; sourceTree = "<group>"; };
+		8CA4575B1E02D5D000475084 /* IndustrySolutionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndustrySolutionsViewController.h; sourceTree = "<group>"; };
+		8CA4575C1E02D5D100475084 /* IndustrySolutionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndustrySolutionsViewController.m; sourceTree = "<group>"; };
+		8CA4575E1E02D62900475084 /* TechnologyServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TechnologyServicesViewController.h; sourceTree = "<group>"; };
+		8CA4575F1E02D62900475084 /* TechnologyServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TechnologyServicesViewController.m; sourceTree = "<group>"; };
+		8CA457611E02ECC200475084 /* IndustrySolutionsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndustrySolutionsTableViewCell.h; sourceTree = "<group>"; };
+		8CA457621E02ECC200475084 /* IndustrySolutionsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndustrySolutionsTableViewCell.m; sourceTree = "<group>"; };
 		8CBA41FE1AE63DFE00EFB2F6 /* BannerIphone@2x35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BannerIphone@2x35.png"; sourceTree = "<group>"; };
 		8CBA42001AE63E3800EFB2F6 /* Banner@2x35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Banner@2x35.png"; sourceTree = "<group>"; };
 		8CBA42021AE63E4700EFB2F6 /* Banner35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Banner35.png; sourceTree = "<group>"; };
@@ -960,6 +984,12 @@
 				FA6AAA44193DAD1A00A00D45 /* ActivitySharingViewController.m */,
 				FAF2D93A193F341100CFC7B2 /* UIActivityViewController+Rotation.h */,
 				FAF2D93B193F341100CFC7B2 /* UIActivityViewController+Rotation.m */,
+				8C63EABC1E004FCE00035BE5 /* IndustrySolutionsVC.h */,
+				8C63EABD1E004FCE00035BE5 /* IndustrySolutionsVC.m */,
+				8C63EAC21E005A7400035BE5 /* IndustrySolutionsListVC.h */,
+				8C63EAC31E005A7400035BE5 /* IndustrySolutionsListVC.m */,
+				8C63EAC51E005ECC00035BE5 /* TechnologyServicesVC.h */,
+				8C63EAC61E005ECC00035BE5 /* TechnologyServicesVC.m */,
 			);
 			path = iPhone;
 			sourceTree = "<group>";
@@ -1305,6 +1335,12 @@
 				FA532F6A18FC253100D9E623 /* HomeViewController */,
 				FA49D8E518F6E1C600EF9F97 /* OfferingsViewController */,
 				FA49D8DC18F6DB2500EF9F97 /* News */,
+				8CA4575B1E02D5D000475084 /* IndustrySolutionsViewController.h */,
+				8CA4575C1E02D5D100475084 /* IndustrySolutionsViewController.m */,
+				8CA4575E1E02D62900475084 /* TechnologyServicesViewController.h */,
+				8CA4575F1E02D62900475084 /* TechnologyServicesViewController.m */,
+				8CA457611E02ECC200475084 /* IndustrySolutionsTableViewCell.h */,
+				8CA457621E02ECC200475084 /* IndustrySolutionsTableViewCell.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1658,6 +1694,10 @@
 				FA96595E1901A18900C52D1E /* FavouritesDataModel.xcdatamodeld */,
 				FA49070D1914D4C500623156 /* Favourites.h */,
 				FA49070E1914D4C500623156 /* Favourites.m */,
+				8C63EABF1E00579F00035BE5 /* IndustrySolutionsData.h */,
+				8C63EAC01E00579F00035BE5 /* IndustrySolutionsData.m */,
+				8C63EAC81E005F9800035BE5 /* TechnologyServicesData.h */,
+				8C63EAC91E005F9800035BE5 /* TechnologyServicesData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1744,11 +1784,11 @@
 				ORGANIZATIONNAME = "Mobile Computing";
 				TargetAttributes = {
 					FA49D81718F67CE100EF9F97 = {
-						DevelopmentTeam = 8ECDHAHU55;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 2YPEZN5755;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -1965,6 +2005,7 @@
 				877275A4192772430026EDD6 /* NewsViewController.m in Sources */,
 				FA2A793F192F752100301D63 /* WhitePapersNCaseStudiesIphoneViewController.m in Sources */,
 				FA49D82C18F67CE100EF9F97 /* AppDelegate.m in Sources */,
+				8CA4575D1E02D5D100475084 /* IndustrySolutionsViewController.m in Sources */,
 				FA61F9E81901489A009A9883 /* AFURLConnectionOperation.m in Sources */,
 				FA8B6A3A1913ABA300095B91 /* CustomNavigationViewController.m in Sources */,
 				FA61F9E71901489A009A9883 /* AFSecurityPolicy.m in Sources */,
@@ -1974,6 +2015,7 @@
 				FA2C262B1930DF5300CA7061 /* SearchListViewController.m in Sources */,
 				FA3770F9190FFDA200135540 /* NewsModelClass.m in Sources */,
 				FA3770FC190FFDA200135540 /* WhitePapersModelClass.m in Sources */,
+				8C63EAC11E00579F00035BE5 /* IndustrySolutionsData.m in Sources */,
 				877275A7192772AD0026EDD6 /* NewsViewControllerCell.m in Sources */,
 				8C190DB71CC8CC6C00D15E1A /* ConatctContentCell.m in Sources */,
 				FA49070F1914D4C500623156 /* Favourites.m in Sources */,
@@ -1993,9 +2035,12 @@
 				FA4457CF190BE29E0044E279 /* DownloadCellController.m in Sources */,
 				FA2ECB4E190E339100E736DA /* VideoDisplayWebViewController.m in Sources */,
 				FA1DF6A1192E37C200B90794 /* ModalListViewController.m in Sources */,
+				8C63EAC71E005ECC00035BE5 /* TechnologyServicesVC.m in Sources */,
 				FA268334192226F3009FB27F /* PDFListCell.m in Sources */,
+				8C63EACA1E005F9800035BE5 /* TechnologyServicesData.m in Sources */,
 				FA3770F7190FFDA200135540 /* CaseStudiesModelClass.m in Sources */,
 				FA49D82818F67CE100EF9F97 /* main.m in Sources */,
+				8C63EABE1E004FCE00035BE5 /* IndustrySolutionsVC.m in Sources */,
 				FA2A7937192F752100301D63 /* DownloadViewCelliPhone.m in Sources */,
 				FA532F7318FC27FB00D9E623 /* NewsListViewController.m in Sources */,
 				FA2C26291930DF5300CA7061 /* ContactUsMapViewController.m in Sources */,
@@ -2003,6 +2048,7 @@
 				FA61FA05190148C6009A9883 /* UIWebView+AFNetworking.m in Sources */,
 				FA38FC121925E8D100996BA1 /* AppDelegate_Common.m in Sources */,
 				FAF2D93C193F341100CFC7B2 /* UIActivityViewController+Rotation.m in Sources */,
+				8C63EAC41E005A7400035BE5 /* IndustrySolutionsListVC.m in Sources */,
 				FA2ECB58190E9DAE00E736DA /* DataConnection.m in Sources */,
 				FA2A793B192F752100301D63 /* VideosTableViewCellControllerTableViewCell.m in Sources */,
 				FA38FC251925FBCD00996BA1 /* MPFlipTransition.m in Sources */,
@@ -2017,6 +2063,7 @@
 				FA2A793D192F752100301D63 /* PDFListCelliPhone.m in Sources */,
 				FA61F9EB1901489A009A9883 /* AFURLSessionManager.m in Sources */,
 				FA24AD051907B9B6001FA470 /* IndustrialOfferingsViewController.m in Sources */,
+				8CA457601E02D62900475084 /* TechnologyServicesViewController.m in Sources */,
 				FA38FC181925FBC400996BA1 /* HomeContentViewController.m in Sources */,
 				FA6AAA45193DAD1A00A00D45 /* ActivitySharingViewController.m in Sources */,
 				FA38FC021925E2B500996BA1 /* BaseViewControllerIphone.m in Sources */,
@@ -2037,6 +2084,7 @@
 				FA3770FD190FFDA200135540 /* XMLParserGData.m in Sources */,
 				FACA65B31930E83600A5BCBA /* WhatsNewControllerCell.m in Sources */,
 				FA4457C8190B81DD0044E279 /* LabelVerticalAlignment.m in Sources */,
+				8CA457631E02ECC300475084 /* IndustrySolutionsTableViewCell.m in Sources */,
 				FA532F6518FBD7FF00D9E623 /* CopyWebContentController.m in Sources */,
 				FA38FC171925FBC400996BA1 /* ContentViewController.m in Sources */,
 				FA38FC041925E2B500996BA1 /* IndustryOfferingsViewControllerIphone.m in Sources */,
@@ -2118,8 +2166,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Syntel Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2137,7 +2185,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "85d452f9-36b6-4a47-ba9a-5e1e72096a1f";
+				PROVISIONING_PROFILE = "1f749fa6-c25a-4cc9-aac1-f32fde117cf2";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -2159,8 +2207,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Syntel Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2171,7 +2219,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "85d452f9-36b6-4a47-ba9a-5e1e72096a1f";
+				PROVISIONING_PROFILE = "1f749fa6-c25a-4cc9-aac1-f32fde117cf2";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -2183,19 +2231,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DiscoverSyntelApp/DiscoverSyntelApp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8ECDHAHU55;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
+				DEVELOPMENT_TEAM = 2YPEZN5755;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiscoverSyntelApp/DiscoverSyntelApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "DiscoverSyntelApp/DiscoverSyntelApp-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = com.syntelEnt.DiscoverSyntel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.syntel.DiscoverSyntel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1f749fa6-c25a-4cc9-aac1-f32fde117cf2";
+				PROVISIONING_PROFILE_SPECIFIER = DiscoverSyntelAppStore;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2206,19 +2254,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DiscoverSyntelApp/DiscoverSyntelApp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8ECDHAHU55;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
+				DEVELOPMENT_TEAM = 2YPEZN5755;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiscoverSyntelApp/DiscoverSyntelApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "DiscoverSyntelApp/DiscoverSyntelApp-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = com.syntelEnt.DiscoverSyntel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.syntel.DiscoverSyntel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1f749fa6-c25a-4cc9-aac1-f32fde117cf2";
+				PROVISIONING_PROFILE_SPECIFIER = DiscoverSyntelAppStore;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

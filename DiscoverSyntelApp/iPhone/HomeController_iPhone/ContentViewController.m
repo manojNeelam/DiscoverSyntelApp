@@ -29,10 +29,11 @@
 {
     [super viewDidLoad];
     
+    
     NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
     NSString *shortVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
     
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSString *date = app.xmlDate;
     if(date && date != nil)
     {
@@ -124,6 +125,10 @@
 {
     [super viewWillAppear:NO];
     isMenuSelected=NO;
+    
+    [self.view layoutIfNeeded];
+
+    
   //  [self animateLabel];
 }
 
@@ -188,14 +193,14 @@
     }
     
     
-    otlLabel.center = CGPointMake(158, 500);
+    //otlLabel.center = CGPointMake(158, 500);
     
     [UIView animateWithDuration:2.0f
                           delay:0.5
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^
      {
-         otlLabel.center = CGPointMake(158, 450);
+         //otlLabel.center = CGPointMake(158, 450);
      }
                      completion:nil];
 }
