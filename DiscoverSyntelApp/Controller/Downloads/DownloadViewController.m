@@ -10,11 +10,12 @@
 #import "AppDelegate.h"
 
 
-@interface DownloadViewController ()
+@interface DownloadViewController () <UIAlertViewDelegate>
 
 @end
 
 @implementation DownloadViewController
+//@synthesize _objTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,11 +31,18 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onDeleteDownloadFile:) name:@"NotificationDeleteDownloadFile" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onSuccessfulDownload:) name:@"NotificationDownloadSuccessful" object:nil];
+    [self reloadData];
+    
+}
+
+-(void)reloadData
+{
     arrDataSourceDownload = [[NSArray alloc]init];
     arrDataSourceDownload=[self fetchDownloadsUrlFromDocDirectory];
     [self setDownloadTableFrame];
     arrDownloadIcon=[[NSArray alloc]initWithObjects:@"PdfSymbol.png",@"VideoSymbol.png",nil];
     
+    [_objTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,6 +50,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
@@ -56,7 +65,6 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    
     // Return the number of sections.
     return 3;
 }
@@ -207,18 +215,23 @@
     label.textColor=[UIColor darkGrayColor];
 
     
+    UILabel *labelSep = [[UILabel alloc] initWithFrame:CGRectMake(0, 27, tableView.frame.size.width+20, 1)];
+    labelSep.backgroundColor=[UIColor darkGrayColor];
+    labelSep.text = @"";
+    [view addSubview:labelSep];
+    
     if(section==0 && directoryContentsCaseStudies.count>0)
     {
         label.text=@"Case Studies";;
         [view addSubview:label];
-        [view setBackgroundColor:[UIColor clearColor]];
+        [view setBackgroundColor:[UIColor whiteColor]];
         return view;
     }
     else if (section==1 && directoryContentsWhitePapers.count>0)
     {
         label.text=@"White Papers";;
         [view addSubview:label];
-        [view setBackgroundColor:[UIColor clearColor]];
+        [view setBackgroundColor:[UIColor whiteColor]];
         return view;
     }
     else if (section==2 && directoryContentsVideos.count>0)
@@ -226,7 +239,7 @@
         
         label.text=@"Videos";
         [view addSubview:label];
-        [view setBackgroundColor:[UIColor clearColor]];
+        [view setBackgroundColor:[UIColor whiteColor]];
         return view;
     }
     
@@ -294,15 +307,15 @@
 -(void)setDownloadTableFrame
 {
     NSInteger height = [directoryContentsWhitePapers count]+[directoryContentsCaseStudies count]+[directoryContentsVideos count];
-  //  [objTableView setFrame:CGRectMake(20, 0, self.view.frame.size.width,height*44)];
-    objTableView.contentSize =CGSizeMake(self.view.frame.size.width,height*44);
-   // [objTableView setFrame:CGRectMake(20, 0, self.view.frame.size.width,height*44)];
-    objTableView.scrollEnabled=YES;
-    objTableView.rowHeight=60;
-    objTableView.contentInset = UIEdgeInsetsMake(0, 0,200, 0);
-    objTableView.sectionHeaderHeight=30;
-    objTableView.sectionFooterHeight=0.0;
-    objTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+  //  [_objTableView setFrame:CGRectMake(20, 0, self.view.frame.size.width,height*44)];
+    _objTableView.contentSize =CGSizeMake(self.view.frame.size.width,height*44);
+   // [_objTableView setFrame:CGRectMake(20, 0, self.view.frame.size.width,height*44)];
+    _objTableView.scrollEnabled=YES;
+    _objTableView.rowHeight=60;
+    _objTableView.contentInset = UIEdgeInsetsMake(0, 0,200, 0);
+    _objTableView.sectionHeaderHeight=30;
+    _objTableView.sectionFooterHeight=0.0;
+    _objTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 }
 -(NSArray*)fetchXmlForTitles:(NSString *)strFileName withXmlKey:(NSString*)strKey
@@ -347,9 +360,14 @@
     if(buttonIndex==1)
     {
         [self removeFileFromDocumentDirectory];
-
+    }
+    
+    if(alertView.tag == 100)
+    {
+        [self reloadData];
     }
 }
+
 -(void)removeFileFromDocumentDirectory
 {
     NSFileManager *fileManager=[NSFileManager defaultManager];
@@ -360,7 +378,7 @@
     arrDataSourceDownload=[self fetchDownloadsUrlFromDocDirectory];
     
     [self setDownloadTableFrame];
-    [objTableView reloadData];
+    [_objTableView reloadData];
     NSString *alertMsg;
     if(isFileDeleted){
         alertMsg=@"File deleted successfully.";
@@ -368,7 +386,12 @@
     else{
         alertMsg=@"File could not be deleted.";
     }
+    
+    //[self reloadData];
+    
     UIAlertView *alertDeletion=[[UIAlertView alloc]initWithTitle:@"Discover Syntel" message:alertMsg delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    alertDeletion.tag = 100;
+    alertDeletion.delegate = self;
     [alertDeletion show];
 
 }
@@ -379,7 +402,7 @@
 {
 
     arrDataSourceDownload=[self fetchDownloadsUrlFromDocDirectory];
-    [objTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    [_objTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     
 }
 @end

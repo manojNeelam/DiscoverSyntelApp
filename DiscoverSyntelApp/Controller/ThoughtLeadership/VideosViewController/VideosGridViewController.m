@@ -31,22 +31,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"NotificationOnClickDownloadVideo" object:nil];
-     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onClickdownloadVideo:) name:@"NotificationOnClickDownloadVideo" object:nil];
- // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onAlertNotification:) name:@"NotifyDownloadFailureAlert" object:nil];
     
-	//CollectionView
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"NotificationOnClickDownloadVideo" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onClickdownloadVideo:) name:@"NotificationOnClickDownloadVideo" object:nil];
+    // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onAlertNotification:) name:@"NotifyDownloadFailureAlert" object:nil];
+    
+    //CollectionView
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     [otlCollectionViewVideo setCollectionViewLayout:flowLayout];
     [otlCollectionViewVideo registerClass:CollectionViewControllerCell.class forCellWithReuseIdentifier:@"CollectionViewControllerCell"];
-   
+    
     [otlCollectionViewVideo setAllowsSelection: YES];
     otlCollectionViewVideo.scrollEnabled=YES;
     AppDelegate *appDelegate=[[UIApplication sharedApplication]delegate];
     arrDataSourceParsedData=appDelegate.arrChangeSetParsedData;
-   // arrDataSourceVideos=[[NSMutableArray alloc]init];
+    // arrDataSourceVideos=[[NSMutableArray alloc]init];
     NSMutableArray *arrTemp=[NSMutableArray array];
     for (NSDictionary *objDic in arrDataSourceParsedData) {
         if([[[objDic allKeys]objectAtIndex:0] isEqualToString:@"Videos"])
@@ -77,34 +77,34 @@
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"PublishDate" ascending:NO selector:@selector(compare:)];
     NSArray *arr = [NSArray arrayWithObject:sortDescriptor];
     dateTemparr = [NSMutableArray arrayWithArray:[dateArray sortedArrayUsingDescriptors:arr]];
-
+    
     numOfSections=ceil((float)[arrDataSourceVideos count]/(float)3);;
     otlCollectionViewVideo.contentInset = UIEdgeInsetsMake(0,0,150,0);
     otlCollectionViewVideo.contentSize=CGSizeMake(self.view.frame.size.width-40, numOfSections*237);
-    otlCollectionViewVideo.frame=CGRectMake(20, 0,self.view.frame.size.width-40 , numOfSections*237-64);
-
-
+    //otlCollectionViewVideo.frame=CGRectMake(20, 0,self.view.frame.size.width-40 , numOfSections*237-64);
+    
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-   
+    
     [super viewWillAppear:NO];
     
- //   [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onClickdownloadVideo:) name:@"NotificationOnClickDownloadVideo" object:nil];
+    //   [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onClickdownloadVideo:) name:@"NotificationOnClickDownloadVideo" object:nil];
     
     otlCollectionViewVideo.contentInset = UIEdgeInsetsMake(0,0,170,0);
     otlCollectionViewVideo.contentSize=CGSizeMake(self.view.frame.size.width-40, numOfSections*237);
-    otlCollectionViewVideo.frame=CGRectMake(20, 0,self.view.frame.size.width-40 , numOfSections*237-64);
+    //otlCollectionViewVideo.frame=CGRectMake(20, 0,self.view.frame.size.width-40 , numOfSections*237-64);
     
     
 }
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:NO];
-     // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onClickdownloadVideo:) name:@"NotificationOnClickDownloadVideo" object:nil];
+    // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onClickdownloadVideo:) name:@"NotificationOnClickDownloadVideo" object:nil];
     otlCollectionViewVideo.contentInset = UIEdgeInsetsMake(0,0,150,0);
     otlCollectionViewVideo.contentSize=CGSizeMake(self.view.frame.size.width-40, numOfSections*237);
-    otlCollectionViewVideo.frame=CGRectMake(20,0,self.view.frame.size.width-40 , numOfSections*237-64);
+    //otlCollectionViewVideo.frame=CGRectMake(20,0,self.view.frame.size.width-40 , numOfSections*237-64);
 }
 - (void)didReceiveMemoryWarning
 {
@@ -134,9 +134,9 @@
         {
             numOfItems=3;
         }
-       // numOfItems = ((int)[arrDataSourceVideos count]) % 3;
+        // numOfItems = ((int)[arrDataSourceVideos count]) % 3;
     }
-
+    
     
     return numOfItems;
 }
@@ -214,39 +214,39 @@
     
     if([[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"tinyURL"]!=nil)
     {
-    
-    strTinyUrlVideo=[[[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"tinyURL"]stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        strTinyUrlVideo=[[[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"tinyURL"]stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     }
     if(![arrKeys containsObject:@"tinyURL"]||[strTinyUrlVideo isEqualToString:@""]){
-       // strTinyUrlVideo=[[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"Source"];
+        // strTinyUrlVideo=[[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"Source"];
         [dicLocationPath setValue:[[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"Source"] forKey:@"tinyURL"];
     }
     else{
         [dicLocationPath setValue:[[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"tinyURL"] forKey:@"tinyURL"];
     }
     
-//    if([strTinyUrlVideo isEqualToString:@""])
-//    {
-//         [dicLocationPath setValue:[[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"Source"] forKey:@"tinyURL"];
-//    }
-//    else
-//    {
-//        [dicLocationPath setValue:[[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"tinyURL"] forKey:@"tinyURL"];
-//    }
-//    
+    //    if([strTinyUrlVideo isEqualToString:@""])
+    //    {
+    //         [dicLocationPath setValue:[[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"Source"] forKey:@"tinyURL"];
+    //    }
+    //    else
+    //    {
+    //        [dicLocationPath setValue:[[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"tinyURL"] forKey:@"tinyURL"];
+    //    }
+    //
     
     
-   // [dicLocationPath setValue:[[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"tinyURL"] forKey:@"tinyURL"];
+    // [dicLocationPath setValue:[[dateTemparr objectAtIndex:indexPath.row+3*indexPath.section]valueForKey:@"tinyURL"] forKey:@"tinyURL"];
     
     NSDictionary *dicNotification=[[NSDictionary alloc]initWithObjectsAndKeys:dicLocationPath,@"ContentDic", nil];
     
     DataConnection *objDataConnection=[[DataConnection alloc]init];
     if([objDataConnection networkConnection])
     {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationVideoSelection" object:nil userInfo:dicNotification];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationVideoSelection" object:nil userInfo:dicNotification];
     }
     
-   }
+}
 
 #pragma mark - Notification Handler
 
@@ -265,52 +265,52 @@
     }
     
     if(isVideoFormatSupported){
-    NSArray* nameArr = [urlStr componentsSeparatedByString:@"/"];
-    NSString* storedNameStr =[nameArr lastObject];
-    AppDelegate *appDelegate=[[UIApplication sharedApplication]delegate];
-    if ([appDelegate.videosDownloadTrackingArray containsObject:storedNameStr]) {
-        
-        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Discover Syntel" message:@"Download already in progress" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    else
-    {
-        
-        // [appDelegate.videosDownloadTrackingArray addObject:strTag];
-        NSString *urlStr=[[arrDataSourceVideos objectAtIndex:[strTag intValue]]valueForKey:@"LocationPath"];
         NSArray* nameArr = [urlStr componentsSeparatedByString:@"/"];
         NSString* storedNameStr =[nameArr lastObject];
-        
-        XMLDownload *objXMLDownload=[[XMLDownload alloc]init];
-        NSMutableDictionary *xmlStoringData=[[NSMutableDictionary alloc]init];
-        [xmlStoringData setValue:urlStr forKey:@"SourcePath"];
-        [xmlStoringData setValue:@"YES" forKey:@"isDownloadsVideo"];
-        [xmlStoringData setValue:@"download/Videos" forKey:@"TargetPath"];
-        DataConnection *objDataConnection=[[DataConnection alloc]init];
-        if([objDataConnection networkConnection]){
-            [appDelegate displayActivityIndicator:self.view];
-            [appDelegate.videosDownloadTrackingArray addObject:storedNameStr];
-            [objXMLDownload downloadXML:xmlStoringData];
+        AppDelegate *appDelegate=[[UIApplication sharedApplication]delegate];
+        if ([appDelegate.videosDownloadTrackingArray containsObject:storedNameStr]) {
+            
+            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Discover Syntel" message:@"Download already in progress" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+        else
+        {
+            
+            // [appDelegate.videosDownloadTrackingArray addObject:strTag];
+            NSString *urlStr=[[arrDataSourceVideos objectAtIndex:[strTag intValue]]valueForKey:@"LocationPath"];
+            NSArray* nameArr = [urlStr componentsSeparatedByString:@"/"];
+            NSString* storedNameStr =[nameArr lastObject];
+            
+            XMLDownload *objXMLDownload=[[XMLDownload alloc]init];
+            NSMutableDictionary *xmlStoringData=[[NSMutableDictionary alloc]init];
+            [xmlStoringData setValue:urlStr forKey:@"SourcePath"];
+            [xmlStoringData setValue:@"YES" forKey:@"isDownloadsVideo"];
+            [xmlStoringData setValue:@"download/Videos" forKey:@"TargetPath"];
+            DataConnection *objDataConnection=[[DataConnection alloc]init];
+            if([objDataConnection networkConnection]){
+                [appDelegate displayActivityIndicator:self.view];
+                [appDelegate.videosDownloadTrackingArray addObject:storedNameStr];
+                [objXMLDownload downloadXML:xmlStoringData];
+                
+            }
             
         }
-        
-    }
     }
     else
     {
         UIAlertView* noConnectionAlert = [[UIAlertView alloc]initWithTitle:@"Discover Syntel" message:@"Video format not supported." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [noConnectionAlert show];
-
+        
     }
-
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"NotificationOnClickDownloadVideo" object:nil];
     
-
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"NotificationOnClickDownloadVideo" object:nil];
+    
+    
 }
 
 @end

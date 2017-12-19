@@ -13,7 +13,7 @@
 @interface VideosGridViewController : UIViewController<UIAlertViewDelegate>
 {
     NSArray *arrDataSourceParsedData;
-     NSMutableArray *dateTemparr;
+    NSMutableArray *dateTemparr;
     NSMutableArray *arrDataSourceVideos;
     IBOutlet UICollectionView *otlCollectionViewVideo;
     CollectionViewControllerCell *objCollectionViewControllerCell;

@@ -12,6 +12,7 @@
 #import "TechnologyServicesData.h"
 #import "WebViewDisplayData.h"
 #import "WebViewDisplayLinksIphone.h"
+#import "WebViewDisplayLinks.h"
 
 @interface TechnologyServicesViewController ()<UIGestureRecognizerDelegate>
 {
@@ -32,8 +33,15 @@
     
     technologyServiceList = [[NSMutableArray alloc] init];//WithArray:[self loadData]];
     technologyServiceList = [self loadData];
+    isMenuOptionSelected=NO;
     
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    isMenuOptionSelected=NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,10 +101,17 @@
     objWebDisplayData.strFilePath = filePath;
     objWebDisplayData.strTitleDisplay = technologySerData.title;
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil];
-    WebViewDisplayLinksIphone *objWebViewDisplayLinksIphone = (WebViewDisplayLinksIphone*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WebViewDisplayLinksIphone"];
-    objWebViewDisplayLinksIphone.webViewDisplayDataReceived=objWebDisplayData;
-    [self.navigationController pushViewController:objWebViewDisplayLinksIphone animated:YES];
+    if(!isMenuOptionSelected)
+    {
+        [self pushView:objWebDisplayData];
+        isMenuOptionSelected = YES;
+    }
+    
+    
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil];
+//    WebViewDisplayLinksIphone *objWebViewDisplayLinksIphone = (WebViewDisplayLinksIphone*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WebViewDisplayLinksIphone"];
+//    objWebViewDisplayLinksIphone.webViewDisplayDataReceived=objWebDisplayData;
+//    [self.navigationController pushViewController:objWebViewDisplayLinksIphone animated:YES];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -136,15 +151,64 @@
     objWebDisplayData.strFilePath = filePath;
     objWebDisplayData.strTitleDisplay = technologySerData.title;
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil];
-    WebViewDisplayLinksIphone *objWebViewDisplayLinksIphone = (WebViewDisplayLinksIphone*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WebViewDisplayLinksIphone"];
-    objWebViewDisplayLinksIphone.webViewDisplayDataReceived=objWebDisplayData;
-    [self.navigationController pushViewController:objWebViewDisplayLinksIphone animated:YES];
+    
+    if(!isMenuOptionSelected)
+    {
+        [self pushView:objWebDisplayData];
+        isMenuOptionSelected = YES;
+    }
+    
+    
+    
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil];
+//    WebViewDisplayLinksIphone *objWebViewDisplayLinksIphone = (WebViewDisplayLinksIphone*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WebViewDisplayLinksIphone"];
+//    objWebViewDisplayLinksIphone.webViewDisplayDataReceived=objWebDisplayData;
+//    [self.navigationController pushViewController:objWebViewDisplayLinksIphone animated:YES];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 0;//technologyServiceList.count;
+}
+
+-(void)pushView:(WebViewDisplayData *)webViewData
+{
+    
+    
+    /*
+     
+     NSString *strURLDisplay;
+     NSString *strTinyURLDisplay;
+     NSString *strTitleDisplay;
+     NSString *strDescriptionDisplay;
+     NSString *strPubDateDisplay;
+     NSString *strPageTitle;
+     NSString *strSourceURL;
+     NSString *strFilePath;
+     
+     
+     indexOfTheObject = [titleArrayNews indexOfObject: selectedText];
+     linkString =[[arrDataSourceNews objectAtIndex:indexOfTheObject]valueForKey:@"LocationPath"];
+     strSearchTitle=[[arrDataSourceNews objectAtIndex:indexOfTheObject]valueForKey:@"Title"];
+     strTinyUrl = [[arrDataSourceNews objectAtIndex:indexOfTheObject]valueForKey:@"tinyURL"];
+     strSourceUrl=[[arrDataSourceNews objectAtIndex:indexOfTheObject]valueForKey:@"Source"];
+     */
+    
+    dictionaryContenets=[[NSMutableDictionary alloc]init];
+    [dictionaryContenets setValue:webViewData.strSourceURL forKey:@"SourceUrl"];
+    
+    [dictionaryContenets setValue:webViewData.strTitleDisplay forKey:@"Title"];
+    [dictionaryContenets setValue:webViewData.strFilePath forKey:@"FilePath"];
+    
+    [dictionaryContenets setValue:webViewData.strURLDisplay  forKey:@"URL"];
+    [dictionaryContenets setValue:webViewData.strPageTitle forKey:@"PageTitle"];
+    [dictionaryContenets setValue:webViewData.strTinyURLDisplay forKey:@"tinyURL"];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    WebViewDisplayLinks *objWebViewDisplayLinks = (WebViewDisplayLinks*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WebViewDisplayLinks"];
+    objWebViewDisplayLinks.dicOfContentLoaded=dictionaryContenets;
+    [self.navigationController pushViewController:objWebViewDisplayLinks animated:YES];
+    //isMenuOptionSelected=YES;
 }
 
 -(NSMutableArray *)loadData

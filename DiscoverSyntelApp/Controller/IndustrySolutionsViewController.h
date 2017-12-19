@@ -9,5 +9,8 @@
 #import "BaseViewController.h"
 
 @interface IndustrySolutionsViewController : BaseViewController
-
+{
+    NSMutableDictionary *dictionaryContenets;
+    BOOL isMenuOptionSelected;
+}
 @end

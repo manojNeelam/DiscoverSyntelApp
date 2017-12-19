@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    AppDelegate_iPhone *appDelegate=[[UIApplication sharedApplication]delegate];
+    AppDelegate_iPhone *appDelegate=(AppDelegate_iPhone *)[[UIApplication sharedApplication]delegate];
    NSArray *arrDataSourceParsedDataNews=appDelegate.arrChangeSetParsedData;
     //arrDataSourceNewsList=[[NSMutableArray alloc]init];
     NSMutableArray *arrTempDataSource=[[NSMutableArray alloc]init];
@@ -131,7 +131,13 @@
     return UIInterfaceOrientationPortrait|UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_9_0
+#define supportedInterfaceOrientationsReturnType NSUInteger
+#else
+#define supportedInterfaceOrientationsReturnType UIInterfaceOrientationMask
+#endif
+
+- (supportedInterfaceOrientationsReturnType)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
 }

@@ -121,11 +121,39 @@
     
 }
 
+-(BOOL)checkStringExsist:(NSString *)str_url
+{
+    NSRange range = [str_url rangeOfString:@"https:"];
+    
+    if (range.location == NSNotFound) {
+        
+        return NO;
+    }
+    else {
+        return YES;
+    }
+}
+
 -(void)loadWebView
 {
     AppDelegate_iPhone *appDelegate=APP_INSTANCE_IPHONE;
     [appDelegate displayActivityIndicator:otlWebViewDisplayData];
-     NSURL *url = [NSURL URLWithString:[webViewDisplayDataReceived.strURLDisplay stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSString *filePath = [webViewDisplayDataReceived.strURLDisplay stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+     //NSURL *url = [NSURL URLWithString:[webViewDisplayDataReceived.strURLDisplay stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    //NSURL *url = [NSURL URLWithString:filePath];
+    NSURL *url;
+    if([self checkStringExsist:filePath])
+    {
+        url = [NSURL URLWithString:filePath];
+    }
+    else
+    {
+        url = [[NSURL alloc] initFileURLWithPath:filePath];
+    }
+    
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [otlWebViewDisplayData loadRequest:requestObj];
    

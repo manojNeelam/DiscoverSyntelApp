@@ -29,14 +29,21 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onDeleteDownloadFile:) name:@"NotificationDeleteDownloadFile" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onSuccessfulDownload:) name:@"NotificationDownloadSuccessful" object:nil];
+    
+    objTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    objTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+
+    [self reloadData];
+    // Do any additional setup after loading the view.
+}
+
+-(void)reloadData
+{
     arrDataSourceDownload = [[NSArray alloc]init];
     arrDataSourceDownload=[self fetchDownloadsUrlFromDocDirectory];
     [self setDownloadTableFrame];
     arrDownloadIcon=[[NSArray alloc]initWithObjects:@"PdfSymbol.png",@"VideoSymbol.png",nil];
-    objTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
-    objTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-
-    // Do any additional setup after loading the view.
+    [objTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -187,15 +194,15 @@
 {
     if(section==0 && directoryContentsCaseStudies.count>0)
     {
-        return 20;
+        return 26;
     }
     else if (section==1 && directoryContentsWhitePapers.count>0)
     {
-        return 20;
+        return 26;
     }
     else if (section==2 && directoryContentsVideos.count>0)
     {
-        return 20;
+        return 26;
     }
     return 0;
 }
@@ -213,25 +220,29 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 20)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 26)];
     /* Create custom view to display section header... */
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 16)];
     label.font=[UIFont fontWithName:@"Helvetica-Bold" size:13];
     label.textColor=[UIColor darkGrayColor];
     
+    UILabel *labelSep = [[UILabel alloc] initWithFrame:CGRectMake(0, 23, tableView.frame.size.width+20, 1)];
+    labelSep.backgroundColor=[UIColor darkGrayColor];
+    labelSep.text = @"";
+    [view addSubview:labelSep];
     
     if(section==0 && directoryContentsCaseStudies.count>0)
     {
         label.text=@"Case Studies";;
         [view addSubview:label];
-        [view setBackgroundColor:[UIColor clearColor]];
+        [view setBackgroundColor:[UIColor whiteColor]];
         return view;
     }
     else if (section==1 && directoryContentsWhitePapers.count>0)
     {
         label.text=@"White Papers";;
         [view addSubview:label];
-        [view setBackgroundColor:[UIColor clearColor]];
+        [view setBackgroundColor:[UIColor whiteColor]];
         return view;
     }
     else if (section==2 && directoryContentsVideos.count>0)
@@ -239,7 +250,7 @@
         
         label.text=@"Videos";
         [view addSubview:label];
-        [view setBackgroundColor:[UIColor clearColor]];
+        [view setBackgroundColor:[UIColor whiteColor]];
         return view;
     }
     
@@ -313,7 +324,7 @@
     objTableView.scrollEnabled=YES;
     objTableView.rowHeight=52;
     objTableView.contentInset = UIEdgeInsetsMake(0, 0,200, 0);
-    objTableView.sectionHeaderHeight=20;
+    objTableView.sectionHeaderHeight=26;
     objTableView.sectionFooterHeight=0.0;
     objTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -381,6 +392,9 @@
     else{
         alertMsg=@"File could not be deleted.";
     }
+    
+    [self reloadData];
+    
     UIAlertView *alertDeletion=[[UIAlertView alloc]initWithTitle:@"Discover Syntel" message:alertMsg delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
     [alertDeletion show];
     
@@ -405,9 +419,16 @@
     return UIInterfaceOrientationPortrait|UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_9_0
+#define supportedInterfaceOrientationsReturnType NSUInteger
+#else
+#define supportedInterfaceOrientationsReturnType UIInterfaceOrientationMask
+#endif
+
+- (supportedInterfaceOrientationsReturnType)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
 }
+
 
 @end

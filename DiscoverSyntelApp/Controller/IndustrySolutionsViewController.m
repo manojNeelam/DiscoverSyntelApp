@@ -10,8 +10,9 @@
 
 #import "IndustrySolutionsViewController.h"
 #import "IndustrySolutionsData.h"
-#import "WebViewDisplayLinksIphone.h"
+#import "WebViewDisplayLinks.h"
 #import "IndustrySolutionsTableViewCell.h"
+#import "WebViewDisplayData.h"
 
 @interface IndustrySolutionsViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 {
@@ -31,13 +32,19 @@
     [self.navigationItem setTitle:@"Industry Solutions"];
     industrySolutionList = [[NSMutableArray alloc] init];//WithArray:[self loadData]];
     industrySolutionList = [self loadData];
-    
+    isMenuOptionSelected = NO;
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    isMenuOptionSelected = NO;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,10 +99,16 @@
     objWebDisplayData.strFilePath = filePath;
     objWebDisplayData.strTitleDisplay = industrySolData.title;
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil];
-    WebViewDisplayLinksIphone *objWebViewDisplayLinksIphone = (WebViewDisplayLinksIphone*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WebViewDisplayLinksIphone"];
-    objWebViewDisplayLinksIphone.webViewDisplayDataReceived=objWebDisplayData;
-    [self.navigationController pushViewController:objWebViewDisplayLinksIphone animated:YES];
+    if(!isMenuOptionSelected)
+    {
+        [self pushView:objWebDisplayData];
+        isMenuOptionSelected = YES;
+    }
+    
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil];
+//    WebViewDisplayLinksIphone *objWebViewDisplayLinksIphone = (WebViewDisplayLinksIphone*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WebViewDisplayLinksIphone"];
+//    objWebViewDisplayLinksIphone.webViewDisplayDataReceived=objWebDisplayData;
+//    [self.navigationController pushViewController:objWebViewDisplayLinksIphone animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -120,10 +133,16 @@
     objWebDisplayData.strFilePath = filePath;
     objWebDisplayData.strTitleDisplay = industrySolData.title;
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil];
-    WebViewDisplayLinksIphone *objWebViewDisplayLinksIphone = (WebViewDisplayLinksIphone*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WebViewDisplayLinksIphone"];
-    objWebViewDisplayLinksIphone.webViewDisplayDataReceived=objWebDisplayData;
-    [self.navigationController pushViewController:objWebViewDisplayLinksIphone animated:YES];
+    if(!isMenuOptionSelected)
+    {
+        [self pushView:objWebDisplayData];
+        isMenuOptionSelected = YES;
+    }
+    
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil];
+//    WebViewDisplayLinksIphone *objWebViewDisplayLinksIphone = (WebViewDisplayLinksIphone*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WebViewDisplayLinksIphone"];
+//    objWebViewDisplayLinksIphone.webViewDisplayDataReceived=objWebDisplayData;
+//    [self.navigationController pushViewController:objWebViewDisplayLinksIphone animated:YES];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -196,6 +215,44 @@
     [dummy addObject:industrySolData];
     
     return dummy;
+}
+
+-(void)pushView:(WebViewDisplayData *)webViewData
+{
+    /*
+     
+     NSString *strURLDisplay;
+     NSString *strTinyURLDisplay;
+     NSString *strTitleDisplay;
+     NSString *strDescriptionDisplay;
+     NSString *strPubDateDisplay;
+     NSString *strPageTitle;
+     NSString *strSourceURL;
+     NSString *strFilePath;
+     
+     
+     indexOfTheObject = [titleArrayNews indexOfObject: selectedText];
+     linkString =[[arrDataSourceNews objectAtIndex:indexOfTheObject]valueForKey:@"LocationPath"];
+     strSearchTitle=[[arrDataSourceNews objectAtIndex:indexOfTheObject]valueForKey:@"Title"];
+     strTinyUrl = [[arrDataSourceNews objectAtIndex:indexOfTheObject]valueForKey:@"tinyURL"];
+     strSourceUrl=[[arrDataSourceNews objectAtIndex:indexOfTheObject]valueForKey:@"Source"];
+     */
+    
+    dictionaryContenets=[[NSMutableDictionary alloc]init];
+    [dictionaryContenets setValue:webViewData.strSourceURL forKey:@"SourceUrl"];
+    
+    [dictionaryContenets setValue:webViewData.strTitleDisplay forKey:@"Title"];
+    [dictionaryContenets setValue:webViewData.strFilePath forKey:@"FilePath"];
+    
+    [dictionaryContenets setValue:webViewData.strURLDisplay  forKey:@"URL"];
+    [dictionaryContenets setValue:webViewData.strPageTitle forKey:@"PageTitle"];
+    [dictionaryContenets setValue:webViewData.strTinyURLDisplay forKey:@"tinyURL"];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    WebViewDisplayLinks *objWebViewDisplayLinks = (WebViewDisplayLinks*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WebViewDisplayLinks"];
+    objWebViewDisplayLinks.dicOfContentLoaded=dictionaryContenets;
+    [self.navigationController pushViewController:objWebViewDisplayLinks animated:YES];
+    //isMenuOptionSelected=YES;
 }
 
 

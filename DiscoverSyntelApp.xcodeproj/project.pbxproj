@@ -40,6 +40,7 @@
 		8CBA41FF1AE63DFE00EFB2F6 /* BannerIphone@2x35.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CBA41FE1AE63DFE00EFB2F6 /* BannerIphone@2x35.png */; };
 		8CBA42011AE63E3800EFB2F6 /* Banner@2x35.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CBA42001AE63E3800EFB2F6 /* Banner@2x35.png */; };
 		8CBA42031AE63E4700EFB2F6 /* Banner35.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CBA42021AE63E4700EFB2F6 /* Banner35.png */; };
+		E4B1CFCF1DE4738900851454 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B1CFCE1DE4738900851454 /* UserNotifications.framework */; };
 		FA1DF6A1192E37C200B90794 /* ModalListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1DF6A0192E37C200B90794 /* ModalListViewController.m */; };
 		FA22D74119090CB70067D0ED /* AddToFavorite.png in Resources */ = {isa = PBXBuildFile; fileRef = FA22D73D19090CB70067D0ED /* AddToFavorite.png */; };
 		FA22D74219090CB70067D0ED /* DownloadIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA22D73E19090CB70067D0ED /* DownloadIcon.png */; };
@@ -346,6 +347,7 @@
 		8CBA41FE1AE63DFE00EFB2F6 /* BannerIphone@2x35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BannerIphone@2x35.png"; sourceTree = "<group>"; };
 		8CBA42001AE63E3800EFB2F6 /* Banner@2x35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Banner@2x35.png"; sourceTree = "<group>"; };
 		8CBA42021AE63E4700EFB2F6 /* Banner35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Banner35.png; sourceTree = "<group>"; };
+		E4B1CFCE1DE4738900851454 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		FA1DF69F192E37C200B90794 /* ModalListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalListViewController.h; sourceTree = "<group>"; };
 		FA1DF6A0192E37C200B90794 /* ModalListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalListViewController.m; sourceTree = "<group>"; };
 		FA22D73D19090CB70067D0ED /* AddToFavorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddToFavorite.png; sourceTree = "<group>"; };
@@ -689,6 +691,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4B1CFCF1DE4738900851454 /* UserNotifications.framework in Frameworks */,
 				FACA65AB1930E35900A5BCBA /* MapKit.framework in Frameworks */,
 				FA4DA829190634D600376DF0 /* Social.framework in Frameworks */,
 				FA96595C1901A05E00C52D1E /* CoreData.framework in Frameworks */,
@@ -1201,6 +1204,7 @@
 		FA49D81A18F67CE100EF9F97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4B1CFCE1DE4738900851454 /* UserNotifications.framework */,
 				FACA65AA1930E35900A5BCBA /* MapKit.framework */,
 				FA4DA828190634D600376DF0 /* Social.framework */,
 				FA96595B1901A05E00C52D1E /* CoreData.framework */,
@@ -1780,11 +1784,11 @@
 		FA49D81018F67CE100EF9F97 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Mobile Computing";
 				TargetAttributes = {
 					FA49D81718F67CE100EF9F97 = {
-						DevelopmentTeam = 2YPEZN5755;
+						DevelopmentTeam = 8ECDHAHU55;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -2163,14 +2167,20 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -2183,7 +2193,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "1f749fa6-c25a-4cc9-aac1-f32fde117cf2";
 				SDKROOT = iphoneos;
@@ -2204,21 +2214,26 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PROVISIONING_PROFILE = "1f749fa6-c25a-4cc9-aac1-f32fde117cf2";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -2231,19 +2246,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DiscoverSyntelApp/DiscoverSyntelApp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
-				DEVELOPMENT_TEAM = 2YPEZN5755;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Syntel Inc.";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 8ECDHAHU55;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiscoverSyntelApp/DiscoverSyntelApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "DiscoverSyntelApp/DiscoverSyntelApp-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = com.syntel.DiscoverSyntel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.syntelEnt.DiscoverSyntel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1f749fa6-c25a-4cc9-aac1-f32fde117cf2";
-				PROVISIONING_PROFILE_SPECIFIER = DiscoverSyntelAppStore;
+				PROVISIONING_PROFILE = "8022b9de-3837-4be8-b10e-c463615ec81d";
+				PROVISIONING_PROFILE_SPECIFIER = DiscoverSyntel__Ent_Dist;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2254,19 +2270,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DiscoverSyntelApp/DiscoverSyntelApp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Syntel Inc. (2YPEZN5755)";
-				DEVELOPMENT_TEAM = 2YPEZN5755;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Syntel Inc.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Syntel Inc.";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 8ECDHAHU55;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiscoverSyntelApp/DiscoverSyntelApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "DiscoverSyntelApp/DiscoverSyntelApp-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = com.syntel.DiscoverSyntel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.syntelEnt.DiscoverSyntel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1f749fa6-c25a-4cc9-aac1-f32fde117cf2";
-				PROVISIONING_PROFILE_SPECIFIER = DiscoverSyntelAppStore;
+				PROVISIONING_PROFILE = "8022b9de-3837-4be8-b10e-c463615ec81d";
+				PROVISIONING_PROFILE_SPECIFIER = DiscoverSyntel__Ent_Dist;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2288,6 +2305,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "DiscoverSyntelAppTests/DiscoverSyntelAppTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.syntel.DiscoverSyntel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "85d452f9-36b6-4a47-ba9a-5e1e72096a1f";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -2307,6 +2325,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiscoverSyntelApp/DiscoverSyntelApp-Prefix.pch";
 				INFOPLIST_FILE = "DiscoverSyntelAppTests/DiscoverSyntelAppTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.syntel.DiscoverSyntel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "85d452f9-36b6-4a47-ba9a-5e1e72096a1f";
 				TEST_HOST = "$(BUNDLE_LOADER)";

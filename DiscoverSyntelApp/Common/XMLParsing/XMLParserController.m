@@ -110,6 +110,23 @@
 }
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string{
     
+    NSString *newString = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    if(newString.length >0)
+    {
+        if(!elementString)
+        {
+            elementString = [[NSMutableString alloc] init];
+            
+            [elementString appendString:string];
+        }
+        else
+        {
+            [elementString appendString:string];
+        }
+    }
+    
+    
     if (parserDelegateTrackCount==0) {
         parserDelegateTrackCount=1;
    
@@ -119,65 +136,68 @@
         parserDelegateTrackCount=1;
     }
     if ([self.elementString isEqualToString:@"LastModifiedDateTime"]) {
-        AppDelegate* appDelegate = [[UIApplication sharedApplication]delegate];
+        AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
         appDelegate.xmlDate = string;
     }
     
     if ([self.elementString isEqualToString:@"Title"]) {
         
-        [itemDict setValue:string forKey:@"Title"];
+        [itemDict setValue:elementString forKey:@"Title"];
     }
     if ([self.elementString isEqualToString:@"Description"]) {
         
-        [itemDict setValue:string forKey:@"Description"];
+        [itemDict setValue:elementString forKey:@"Description"];
         
     }
     if ([self.elementString isEqualToString:@"PublishDate"]) {
         
-        [itemDict setValue:string forKey:@"PublishDate"];
+        [itemDict setValue:elementString forKey:@"PublishDate"];
         
     }
     if ([self.elementString isEqualToString:@"Sequence"]) {
         
-        [itemDict setValue:string forKey:@"Sequence"];
+        [itemDict setValue:elementString forKey:@"Sequence"];
         
     }
     if ([self.elementString isEqualToString:@"LocationPath"]) {
         
-        [itemDict setValue:string forKey:@"LocationPath"];
+        [itemDict setValue:elementString forKey:@"LocationPath"];
         
     }
     if ([self.elementString isEqualToString:@"image"]) {
         
-        [itemDict setValue:string forKey:@"image"];
+        [itemDict setValue:elementString forKey:@"image"];
         
     }
     if([self.elementString isEqualToString:@"TargetPath"])
     {
-        [itemDict setValue:string forKey:@"TargetPath"];
+        [itemDict setValue:elementString forKey:@"TargetPath"];
         
     }
     if([self.elementString isEqualToString:@"Source"])
     {
-        [itemDict setValue:string forKey:@"Source"];
+        [itemDict setValue:elementString forKey:@"Source"];
         
     }
     
     if([self.elementString isEqualToString:@"SourcePath"])
     {
-        [itemDict setValue:string forKey:@"SourcePath"];
+        [itemDict setValue:elementString forKey:@"SourcePath"];
     }
     if([self.elementString isEqualToString:@"Category"])
     {
-        [itemDict setValue:string forKey:@"Category"];
+        [itemDict setValue:elementString forKey:@"Category"];
     }
     if([self.elementString isEqualToString:@"tinyURL"])
     {
-        [itemDict setValue:string forKey:@"tinyURL"];
+        [itemDict setValue:elementString forKey:@"tinyURL"];
     }
 }
 
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{
+    
+    elementString = nil;
+    
     if (parserDelegateTrackCount==0) {
         parserDelegateTrackCount=2;
         
@@ -243,7 +263,7 @@
     
     NSLog(@"ParentDictionaryArray %@",parentDictArray);
     
-    AppDelegate *appDelegate=[[UIApplication sharedApplication]delegate];
+    AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
     appDelegate.arrChangeSetParsedData=parentDictArray;
     if (appDelegate.reloadWhatsNew==1) {
      [[NSNotificationCenter defaultCenter]postNotificationName:@"reloadWhatsNew" object:nil userInfo:nil];

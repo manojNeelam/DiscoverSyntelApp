@@ -9,5 +9,8 @@
 #import "BaseViewController.h"
 
 @interface TechnologyServicesViewController : BaseViewController
-
+{
+    NSMutableDictionary *dictionaryContenets;
+    BOOL isMenuOptionSelected;
+}
 @end

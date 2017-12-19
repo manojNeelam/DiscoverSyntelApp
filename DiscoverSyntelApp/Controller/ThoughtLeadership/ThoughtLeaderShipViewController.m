@@ -46,12 +46,12 @@
 {
     [super viewWillAppear:NO];
     
-   // [otlSegmentThoughtLeadership setTintColor:[UIColor colorWithRed:(0/255.0) green:(143.0/255.0) blue:(161.0/255.0) alpha:1.0]];
+    // [otlSegmentThoughtLeadership setTintColor:[UIColor colorWithRed:(0/255.0) green:(143.0/255.0) blue:(161.0/255.0) alpha:1.0]];
     if(![self fetchDocumentDirectoryFiles])
     {
         [otlSegmentThoughtLeadership setEnabled:NO forSegmentAtIndex:3];
     }
-   
+    
     
 }
 -(void)viewDidAppear:(BOOL)animated
@@ -75,18 +75,18 @@
     {
         [otlSegmentThoughtLeadership setEnabled:NO forSegmentAtIndex:3];
     }
-
+    
     if(otlViewThoughtLeadership.subviews.count>0)
     {
         [[otlViewThoughtLeadership.subviews objectAtIndex:0]removeFromSuperview];
     }
-
+    
     if(otlSegmentThoughtLeadership.selectedSegmentIndex==2)
     {
-      UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         
         objVideosGridViewController = (VideosGridViewController*)[mainStoryboard
-         instantiateViewControllerWithIdentifier: @"VideosGridViewController"];
+                                                                  instantiateViewControllerWithIdentifier: @"VideosGridViewController"];
         
         UICollectionView* subviewTbl=[objVideosGridViewController.view.subviews objectAtIndex:0];
         otlViewThoughtLeadership.frame=CGRectMake(0, 100, subviewTbl.frame.size.width, subviewTbl.frame.size.height);
@@ -106,14 +106,14 @@
         [objUserDefault setValue:strSelected forKey:@"SelectedValue"];
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         
-       self.objWhitePapersCaseStudiesListViewController = (WhitePapersCaseStudiesListViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WhitePapersCaseStudiesListViewController"];
+        self.objWhitePapersCaseStudiesListViewController = (WhitePapersCaseStudiesListViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WhitePapersCaseStudiesListViewController"];
         
         UITableView* subviewTbl=[self.objWhitePapersCaseStudiesListViewController.view.subviews objectAtIndex:0];
         
         otlViewThoughtLeadership.frame=CGRectMake(0, 100, subviewTbl.frame.size.width, subviewTbl.frame.size.height);
         self.objWhitePapersCaseStudiesListViewController.strIdentifier=strSelected;
         
-               [otlViewThoughtLeadership addSubview:self.objWhitePapersCaseStudiesListViewController.view];
+        [otlViewThoughtLeadership addSubview:self.objWhitePapersCaseStudiesListViewController.view];
         
     }
     else if (otlSegmentThoughtLeadership.selectedSegmentIndex==3)
@@ -134,9 +134,9 @@
         }
         
         
-
+        
     }
-
+    
 }
 
 #pragma mark - Notification Handler
@@ -144,23 +144,23 @@
 {
     
     
-       UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-       if([[[notification.userInfo valueForKey:@"ContentDic"]valueForKey:@"PageTitle"]isEqualToString:@"Videos"]){
-           // For displaying Videos
-           VideoDisplayWebViewController *objVideoDisplayWebViewController= (VideoDisplayWebViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"VideoDisplayWebViewController"];
-           objVideoDisplayWebViewController.dicOfContentLoaded=[notification.userInfo valueForKey:@"ContentDic"];
-           [self.navigationController pushViewController:objVideoDisplayWebViewController animated:YES];
-       }
-       else{
-           
-           // For displaying WhitePapers and CaseStudies
-           WebViewDisplayLinks *objWebViewDisplayLinks= (WebViewDisplayLinks*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WebViewDisplayLinks"];
-           objWebViewDisplayLinks.dicOfContentLoaded=[notification.userInfo valueForKey:@"ContentDic"];
-           [self.navigationController pushViewController:objWebViewDisplayLinks animated:YES];
-           
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    if([[[notification.userInfo valueForKey:@"ContentDic"]valueForKey:@"PageTitle"]isEqualToString:@"Videos"]){
+        // For displaying Videos
+        VideoDisplayWebViewController *objVideoDisplayWebViewController= (VideoDisplayWebViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"VideoDisplayWebViewController"];
+        objVideoDisplayWebViewController.dicOfContentLoaded=[notification.userInfo valueForKey:@"ContentDic"];
+        [self.navigationController pushViewController:objVideoDisplayWebViewController animated:YES];
+    }
+    else{
         
-       }
-
+        // For displaying WhitePapers and CaseStudies
+        WebViewDisplayLinks *objWebViewDisplayLinks= (WebViewDisplayLinks*)[mainStoryboard instantiateViewControllerWithIdentifier: @"WebViewDisplayLinks"];
+        objWebViewDisplayLinks.dicOfContentLoaded=[notification.userInfo valueForKey:@"ContentDic"];
+        [self.navigationController pushViewController:objWebViewDisplayLinks animated:YES];
+        
+        
+    }
+    
 }
 
 -(void)loadInitailView
@@ -169,7 +169,7 @@
     NSUserDefaults *objUserDefault=[NSUserDefaults standardUserDefaults];
     [objUserDefault setValue:WhitePapers forKey:@"SelectedValue"];
     self.objWhitePapersCaseStudiesListViewController = (WhitePapersCaseStudiesListViewController*)[mainStoryboard
-                                                                                              instantiateViewControllerWithIdentifier: @"WhitePapersCaseStudiesListViewController"];
+                                                                                                   instantiateViewControllerWithIdentifier: @"WhitePapersCaseStudiesListViewController"];
     UITableView* subviewTbl=[self.objWhitePapersCaseStudiesListViewController.view.subviews objectAtIndex:0];
     
     otlViewThoughtLeadership.frame=CGRectMake(0, 110, subviewTbl.frame.size.width, subviewTbl.frame.size.height);
@@ -183,14 +183,14 @@
 {
     BOOL isFileFound=NO;
     
-  //  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  //  NSString *documentsDirectory = [paths objectAtIndex:0];
+    //  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //  NSString *documentsDirectory = [paths objectAtIndex:0];
     NSURL *documentDirURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
     NSURL *tmpDir = [[documentDirURL URLByDeletingLastPathComponent] URLByAppendingPathComponent:@"Library/Caches" isDirectory:YES];
     
     //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [tmpDir path];
-
+    
     
     BOOL isCaseStudyFileFound=[self fileCheckWithDocumentDirectoryPath:[documentsDirectory stringByAppendingString:@"/download/CaseStudies"]];
     BOOL isWhitePaperFileFound=[self fileCheckWithDocumentDirectoryPath:[documentsDirectory stringByAppendingString:@"/download/WhitePapers"]];
@@ -210,7 +210,7 @@
     BOOL isFile=NO;
     NSError *error=nil;
     NSArray *directoryContents=[[NSFileManager defaultManager]
-                                           contentsOfDirectoryAtPath:strPath error:&error];
+                                contentsOfDirectoryAtPath:strPath error:&error];
     
     if(directoryContents.count>0){
         isFile=YES;
@@ -235,6 +235,11 @@
 
 -(void)onSuccessfulDownload:(NSNotification*)notification
 {
+    if(otlSegmentThoughtLeadership.selectedSegmentIndex==0||otlSegmentThoughtLeadership.selectedSegmentIndex==1)
+    {
+        [self.objWhitePapersCaseStudiesListViewController viewWillAppear:true];
+    }
+    
     [otlSegmentThoughtLeadership setEnabled:YES forSegmentAtIndex:3];
 }
 

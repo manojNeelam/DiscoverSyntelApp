@@ -418,7 +418,7 @@
 
 -(void)createSearchOptionsArray
 {
-    AppDelegate *appDelegate=[[UIApplication sharedApplication]delegate];
+    AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
     arrDataSourceParsedData=appDelegate.arrChangeSetParsedData;
     // arrDataSourceVideos=[[NSMutableArray alloc]init];
     NSMutableArray *arrTemp=[NSMutableArray array];
@@ -626,7 +626,13 @@
     return UIInterfaceOrientationPortrait|UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_9_0
+#define supportedInterfaceOrientationsReturnType NSUInteger
+#else
+#define supportedInterfaceOrientationsReturnType UIInterfaceOrientationMask
+#endif
+
+- (supportedInterfaceOrientationsReturnType)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
 }

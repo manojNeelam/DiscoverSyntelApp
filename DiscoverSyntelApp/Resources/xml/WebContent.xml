@@ -202,7 +202,9 @@
 			  <Source>http://investor.syntelinc.com/releasedetail.cfm?ReleaseID=897269</Source>
 			  <tinyURL/>
 		 </Item>
-		<Item>
+		<!--
+         //Manoj commented, Doublicate data
+         <Item>
 				<Title>Syntel Drives Business Transformation With SyntBots Automation Platform</Title>
 				<Description>Syntel Inc.(Nasdaq SYNT) a global provider of digital transformation information technology and knowledge process services to Global 2000 companies, today announced the deployment of SyntBots</Description>
 				<PublishDate>Fri, 20 feb 2015 06:00:30 GMT</PublishDate>
@@ -210,6 +212,7 @@
 				<Source>http://investor.syntelinc.com/releasedetail.cfm?ReleaseID=897269</Source>
 				<tinyURL/>
 			</Item>
+         -->
 		<Item>
 			<Title>Syntel Reports Fourth Quarter and Full Year 2014 Financial Results</Title>
 			<Description>Syntel Inc.(NasdaqSYNT) a global provider of digital transformation information technology and knowledge process services to Global 2000 companies today announced financial results for the fourth quarter...</Description>
@@ -804,7 +807,11 @@
 		<Source>https://www.syntelinc.com/sites/default/files/syntel_salesforce_practice.pdf</Source>
 		<tinyURL/>
 	</Item>
-	<Item>
+	<!--
+     commented by manoj
+     doublicate item
+     
+     <Item>
 		<Title>Syntel’s Salesforce Practice</Title>
 		<Category>RLT</Category>
 		<Description>As cloud services mature more and more enterprises are adopting public enterprise PaaS platforms. They provide a great solution for rapid application development, especially for external facing use cases. The driving force behind this transformation is Salesforce.com; it has transformed the way companies collaborate and communicate with their customers. Syntel being a Silver partner is a leading end-to-end Salesforce solution and service provider. </Description>
@@ -814,6 +821,7 @@
 		<Source>https://www.syntelinc.com/sites/default/files/syntel_salesforce_practice.pdf</Source>
 		<tinyURL/>
 	</Item>
+     -->
 	<Item>
 		<Title>Syntel’s Microsoft Azure Practice Overview</Title>
 		<Category>RLT</Category>
@@ -1180,16 +1188,6 @@
 		<LocationPath>https://www.syntelinc.com/sites/default/files/synt_syntbots_itops.pdf</LocationPath>
 		<image>https://marcom.syntel.in/Notification/devicecontent/images/private-cloud.png</image>
 		<Source>https://www.syntelinc.com/sites/default/files/synt_syntbots_itops.pdf</Source>
-		<tinyURL/>
-	</Item>
-	<Item>
-		<Title>Syntel’s Salesforce Practice</Title>
-		<Category>Whitepapers</Category>
-		<Description>As cloud services mature more and more enterprises are adopting public enterprise PaaS platforms. They provide a great solution for rapid application development, especially for external facing use cases. The driving force behind this transformation is Salesforce.com; it has transformed the way companies collaborate and communicate with their customers. Syntel being a Silver partner is a leading end-to-end Salesforce solution and service provider. </Description>
-		<PublishDate>November, 2016</PublishDate>
-		<LocationPath>https://www.syntelinc.com/sites/default/files/syntel_salesforce_practice.pdf</LocationPath>
-		<image>https://marcom.syntel.in/Notification/devicecontent/images/private-cloud.png</image>
-		<Source>https://www.syntelinc.com/sites/default/files/syntel_salesforce_practice.pdf</Source>
 		<tinyURL/>
 	</Item>
 	<Item>

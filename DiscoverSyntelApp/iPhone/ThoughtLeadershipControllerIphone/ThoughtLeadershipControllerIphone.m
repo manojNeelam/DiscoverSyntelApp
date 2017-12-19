@@ -202,6 +202,12 @@
 }
 -(void)onSuccessfulDownload:(NSNotification*)notification
 {
+    if(otlSegmentThoughtLeadershipIphone.selectedSegmentIndex==0||otlSegmentThoughtLeadershipIphone.selectedSegmentIndex==1)
+    {
+        [self.objWhitePapersNCaseStudiesIphoneViewController viewWillAppear:true];
+    }
+    
+    
     [otlSegmentThoughtLeadershipIphone setEnabled:YES forSegmentAtIndex:3];
 }
 #pragma mark - UIInterfaceOrientation
@@ -215,7 +221,13 @@
     return UIInterfaceOrientationPortrait|UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_9_0
+#define supportedInterfaceOrientationsReturnType NSUInteger
+#else
+#define supportedInterfaceOrientationsReturnType UIInterfaceOrientationMask
+#endif
+
+- (supportedInterfaceOrientationsReturnType)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
 }

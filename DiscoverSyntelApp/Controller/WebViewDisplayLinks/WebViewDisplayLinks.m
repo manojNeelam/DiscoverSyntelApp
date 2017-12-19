@@ -48,7 +48,21 @@
     [appDelegate displayActivityIndicator:self.view];
     strUrlIndustryOfferings=[self.dicOfContentLoaded valueForKey:@"URL"];
     NSString *filePath = [strUrlIndustryOfferings stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *url = [NSURL URLWithString:filePath];
+    
+    
+    
+    //NSURL *url = [NSURL URLWithString:filePath];
+    NSURL *url;
+    if([self checkStringExsist:filePath])
+    {
+        url = [NSURL URLWithString:filePath];
+    }
+    else
+    {
+        url = [[NSURL alloc] initFileURLWithPath:filePath];
+    }
+        
+    
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
    // otlWebViewIndustryOfferings.scalesPageToFit=YES;
     [otlWebViewIndustryOfferings loadRequest:requestObj];
@@ -56,6 +70,21 @@
     otlBtnBack.hidden=YES;
     [self fetchFavouritesOnLoad];
 }
+
+
+-(BOOL)checkStringExsist:(NSString *)str_url
+{
+    NSRange range = [str_url rangeOfString:@"https:"];
+    
+    if (range.location == NSNotFound) {
+        
+        return NO;
+    }
+    else {
+        return YES;
+    }
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:NO];

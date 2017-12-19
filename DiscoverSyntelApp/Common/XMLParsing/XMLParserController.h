@@ -20,6 +20,8 @@
     NSString* parentString;
     int parserDelegateTrackCount;
     
+    
+    NSMutableString *elementString;
 }
 
 -(void)parseXML;

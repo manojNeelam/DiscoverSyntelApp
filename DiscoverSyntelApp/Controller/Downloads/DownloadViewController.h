@@ -30,4 +30,6 @@
     
     
 }
+
+@property (nonatomic, weak) IBOutlet UITableView* objTableView;
 @end

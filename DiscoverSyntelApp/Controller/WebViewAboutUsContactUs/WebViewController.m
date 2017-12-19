@@ -200,7 +200,7 @@
     return UIInterfaceOrientationPortrait|UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
 }
